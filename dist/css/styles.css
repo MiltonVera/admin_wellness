@@ -1,0 +1,20 @@
+
+:root{
+    --azul : #08D9D6;
+    --negro : #252A34;
+    --rojo : #FF2E63;
+    --gris : #EAEAEA;
+
+}
+.bg-azul{
+    background-color: var(--azul);
+}
+.bg-negro{
+    background-color: var(--negro);
+}
+.bg-rojo{
+    background-color: var(--rojo);
+}
+.bg-gris{
+    background-color: var(--gris);
+}
