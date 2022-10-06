@@ -16,7 +16,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-  <?php if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php" ){?>
+  <?php if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php" || $pagina == "crear-entrenamiento.php"){?>
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <?php } ?>

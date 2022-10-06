@@ -54,7 +54,7 @@
             </a>
             <ul class="nav nav-treeview ml-3">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="crear-entrenamiento.php" class="nav-link">
                   <i class="fas fa-plus"></i>
                   <p>Crear Entrenamiento</p>
                 </a>
