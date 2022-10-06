@@ -38,7 +38,7 @@
 
                 <div class="form-group col-md-6">
                     <label>Musculo</label>
-                    <select class="select2" multiple="multiple" data-placeholder="Selecciona un musculo" style="width: 100%;" name="musculo">
+                    <select class="select2" style="width: 100%;" name="musculo">
                         <option>Triceps</option>
                         <option>Pecho</option>
                         <option>Deltoides</option>

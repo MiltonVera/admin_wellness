@@ -56,7 +56,7 @@ if($pagina == "lista-admin.php"){?>
 
 
 <?php 
-if($pagina == "crear-ejercicio.php"){?>
+if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php"  ){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -88,5 +88,16 @@ $(function () {
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
+
+<?php 
+if($pagina == "crear-rutina.php" ){?>
+<script src="dist/js/rutina.js"></script>
+<?php } ?>
+
+<?php 
+if($pagina == "crear-entrenamiento.php" ){?>
+<script src="dist/js/entrenamiento.js"></script>
+<?php } ?>
+
 </body>
 </html>
