@@ -56,7 +56,7 @@ if($pagina == "lista-admin.php"){?>
 
 
 <?php 
-if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php"  ){?>
+if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php" || $pagina == "crear-entrenamiento.php" ){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
