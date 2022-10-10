@@ -79,6 +79,7 @@ $(function () {
 <script src="dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
+<script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- jQuery Mapael -->
 <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="plugins/raphael/raphael.min.js"></script>
@@ -99,6 +100,8 @@ if($pagina == "crear-rutina.php" ){?>
 if($pagina == "crear-entrenamiento.php" ){?>
 <script src="dist/js/entrenamiento.js"></script>
 <?php } ?>
+
+<script src="dist/js/ajax.js"></script>
 
 </body>
 </html>
