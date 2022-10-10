@@ -9,11 +9,11 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Administradores</h3>
+                        <h3 class="card-title">Ejercicios</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="admins" class="table table-bordered table-striped">
+                        <table id="tabla" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Portada</th>

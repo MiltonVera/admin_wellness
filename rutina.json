@@ -1,0 +1,15 @@
+{
+    "id": "id",
+    "nombre": "Press de banca",
+    "nivel" : "Basico",
+    "sub_nivel" : 2,
+    "rutina":{
+        "id": "id",
+        "nombre": "Press de banca",
+        "zonaCuerpo" : "Superior",
+        "musculo" : "Pecho",
+        "nivel" : "Basico",
+        "url_img":"image/correcto.jpg",
+        "url_gif": "gif-response"
+    }
+}
