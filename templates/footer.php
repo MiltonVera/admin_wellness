@@ -13,7 +13,7 @@
 
 
 <?php 
-if($pagina == "lista-admin.php"){?>
+if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php"){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -25,10 +25,11 @@ if($pagina == "lista-admin.php"){?>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+
 <script>
   $(function () {
     
-    let tabla = $('#admins').DataTable({
+    let tabla = $('#tabla').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,

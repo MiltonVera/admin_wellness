@@ -17,7 +17,7 @@
 
                 <div class="form-group col-md-3">
                     <label>Clasificación</label>
-                    <select class="form-control" name="clasificacion">
+                    <select class="form-control" id="clasificacion" name="clasificacion">
                         <option>Adaptación Anatómica</option>
                         <option>Fuerza</option>
                         <option>Hipertrofia</option>
@@ -26,7 +26,7 @@
 
                 <div class="form-group col-md-3">
                     <label>Nivel</label>
-                    <select class="form-control" name="nivel">
+                    <select class="form-control" id="nivel_entrenamiento" name="nivel_entrenamiento">
                         <option>Basico</option>
                         <option>Intermedio</option>
                         <option>Avanzado</option>
@@ -35,7 +35,7 @@
 
                 <div class="form-group col-md-3">
                     <label>Sub-Nivel</label>
-                    <select class="form-control" name="subnivel">
+                    <select class="form-control" id="subnivel_entrenamiento" name="subnivel_entrenamiento">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -59,12 +59,19 @@
                                 <option value="Otra">Hola, soy otra rutina</option>
                             </select>
                         </div>
-
                         <input type="hidden" id="id" name="id[]" value="2">
-                        <input type="hidden" id="rutina" name="rutinas[]" value="Rutina Fantastica">
-                        <input type="hidden" id="nivel" name="nivel[]" value="Basico">
-                        <input type="hidden" id="sub_nivel" name="sub_nivel[]" value="1">
 
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nivel">Nivel</label>
+                            <input type="text" id="nivel" class="form-control" name="nivel[]" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="subnivel">Subnivel</label>
+                            <input type="number" id="sub_nivel" class="form-control" name="subnivel[]" readonly >
+                        </div>
                     </div>
 
                     <button class="btn btn-danger col-12" id="eliminar">Eliminar</button>
