@@ -13,7 +13,7 @@
 
 
 <?php 
-if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php"){?>
+if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina == "lista-rutina.php" || $pagina == "lista-entrenamiento.php"){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
