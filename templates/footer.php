@@ -13,7 +13,7 @@
 
 
 <?php 
-if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php"){?>
+if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina == "lista-rutina.php" || $pagina == "lista-entrenamiento.php"){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -57,11 +57,11 @@ if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php"){?>
 
 
 <?php 
-if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php" || $pagina == "crear-entrenamiento.php" ){?>
+if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar"){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
 <script>
 
@@ -75,10 +75,14 @@ $(function () {
 <?php } ?>
 
 
+
+
+
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
+<script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- jQuery Mapael -->
 <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="plugins/raphael/raphael.min.js"></script>
@@ -99,6 +103,9 @@ if($pagina == "crear-rutina.php" ){?>
 if($pagina == "crear-entrenamiento.php" ){?>
 <script src="dist/js/entrenamiento.js"></script>
 <?php } ?>
+
+<script src="dist/js/ajax.js"></script>
+<script src="dist/js/app.js"></script>
 
 </body>
 </html>

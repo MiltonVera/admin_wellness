@@ -60,7 +60,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="lista-entrenamiento.php" class="nav-link">
                   <i class="fa-solid fa-eye"></i>
                   <p>Ver Entrenamientos</p>
                 </a>
@@ -83,7 +83,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="lista-rutina.php" class="nav-link">
                   <i class="fa-solid fa-eye"></i>
                   <p>Ver Rutinas</p>
                 </a>
