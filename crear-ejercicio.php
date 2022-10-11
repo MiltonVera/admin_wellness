@@ -1,6 +1,6 @@
 <?php include_once "templates/header.php"; ?>
 <?php include_once "templates/sidebar.php" ?>
-<?php include_once "functions/connection.php" ?>
+
 
 <div class="card">
     <div class="card-header">
@@ -20,8 +20,8 @@
                 <label>Nivel</label>
                 <select class="form-control" name="nivel">
                     <option>Basico</option>
-                    <option>Intermedio</option>
-                    <option>Avanzado</option>
+                    <option >Intermedio</option>
+                    <option >Avanzado</option>
                 </select>
             </div>
         </div>
@@ -49,7 +49,7 @@
                         <option>Isquiotibiales</option>
                         <option>Aductores</option>
                         <option>Abductores</option>
-                        <option>Glúteo</option>
+                        <option>Gluteo</option>
                         <option>Cuadriceps</option>
                         <option>Biceps Femoral</option>
                         <option>Soleos</option>

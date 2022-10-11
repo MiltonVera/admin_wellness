@@ -57,11 +57,11 @@ if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina =
 
 
 <?php 
-if($pagina == "crear-ejercicio.php" || $pagina == "crear-rutina.php" || $pagina == "crear-entrenamiento.php" ){?>
+if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar"){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
 <script>
 
@@ -73,6 +73,9 @@ $(function () {
 
 </script>
 <?php } ?>
+
+
+
 
 
 <!-- AdminLTE App -->
@@ -102,6 +105,7 @@ if($pagina == "crear-entrenamiento.php" ){?>
 <?php } ?>
 
 <script src="dist/js/ajax.js"></script>
+<script src="dist/js/app.js"></script>
 
 </body>
 </html>

@@ -50,14 +50,18 @@ $(function() {
                         'Correcto',
                         'Se guardo correctamente',
                         'success'
-                    )
+                    );
+                    $("#guardar-registro-archivo").trigger("reset");
+                    setTimeout(() => {
+                        window.location.replace(resultado.regreso);
+                    }, 2000);
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Hubo un error',
                         text: 'Prueba un nombre de ususario diferente',
                         footer: ''
-                    })
+                    });
                 }
 
             }
