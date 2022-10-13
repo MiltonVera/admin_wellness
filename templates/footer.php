@@ -13,7 +13,7 @@
 
 
 <?php 
-if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina == "lista-rutina.php" || $pagina == "lista-entrenamiento.php"){?>
+if(substr($pagina,0,5) == "lista"){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -28,8 +28,12 @@ if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina =
 
 <script>
   $(function () {
-    
-    let tabla = $('#tabla').DataTable({
+
+    if ( $.fn.dataTable.isDataTable( '#tabla' ) ) {
+    table = $('#tabla').DataTable();
+    }
+    else {
+        table = $('#tabla').DataTable( {
       "paging": true,
       "lengthChange": false,
       "searching": true,
@@ -49,7 +53,9 @@ if($pagina == "lista-admin.php" || $pagina == "lista-ejercicio.php" || $pagina =
             infoEmpty: '0 Registros',
             search: 'Buscar: '
         }
-    });
+    } );
+    }
+    
   });
 </script>
 

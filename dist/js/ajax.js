@@ -9,23 +9,12 @@ $(function() {
             url: $(this).attr('action'),
             dataType: 'json',
             success: function(data) {
-                let resultado = data;
-                console.log(resultado);
-                if (resultado.respuesta == "exito") {
-                    Swal.fire(
-                        'Correcto',
-                        'Se guardo correctamente',
-                        'success'
-                    )
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Hubo un error',
-                        text: 'Prueba un nombre de ususario diferente',
-                        footer: ''
-                    })
-                }
-
+                Swal.fire(
+                    'Correcto',
+                    'Se guardo correctamente',
+                    'success'
+                )
+                console.log(data);
             }
         })
     });
