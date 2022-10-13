@@ -20,6 +20,7 @@
                                     <th>Clasificación</th>
                                     <th>Nivel</th>
                                     <th>Subnivel</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,6 +88,7 @@
                                     <th>Clasificación</th>
                                     <th>Nivel</th>
                                     <th>Subnivel</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </tfoot>
                         </table>

@@ -1,5 +1,6 @@
 <?php include_once "templates/header.php"; ?>
 <?php include_once "templates/sidebar.php" ?>
+<?php include_once "functions/connection.php" ?>
 
 <div class="card">
     <div class="card-header">
@@ -7,12 +8,22 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form>
+    <form name="guardar-registro" action="models/modelo-rutina.php" id="guardar-registro" method="post" enctype="multipart/form-data">
         <div class="card-body">
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Rutina">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Clasificación</label>
+                    <select class="form-control" id="clasificacion" name="clasificacion">
+                        <option>Adaptación Anatómica</option>
+                        <option>Fuerza</option>
+                        <option>Hipertrofia</option>
+                        <option>Calentamiento</option>
+                    </select>
                 </div>
 
                 <div class="form-group col-md-3">
@@ -45,21 +56,31 @@
                         <div class="form-group col-8">
                             <label>Ejercicio</label>
                             <select class="select2" style="width: 100%;" name="ejercicio">
-                                <option value="Press">Press de Banca</option>
-                                <option value="Fondos">Fondos</option>
-                                <option value="Lagartijas">Lagartijas</option>
+                            <option disabled selected="selected" >---Seleccionar---</option>
+                                <?php
+                            try {
+                                $sql = "SELECT * FROM ejercicio";
+                                $resultado = $conn->query($sql);
+                            } catch (Exception $e) {
+                                $error = $e->getMessage();
+                                echo $error;
+                            }
+                            
+                            while($ejercicio = $resultado->fetch_assoc() ) { ?>
+                                <option value="<?php echo $ejercicio["id_ejercicio"] ?>"><?php echo $ejercicio["nombre"] ?></option>
+                            <?php } ?>  
                             </select>
                         </div>
                         <div class="col-4">
                             <img src="image/prueba.jpg" class="imagen-ejercicio" alt="Ejercicio">
                         </div>
 
-                        <input type="hidden" id="id" name="id[]" value="2">
-                        <input type="hidden" id="zona_cuerpo" name="zona_cuerpo[]" value="Superior">
-                        <input type="hidden" id="musculo" name="musculo[]" value="Pecho">
-                        <input type="hidden" id="nivel" name="nivel[]" value="Basico">
-                        <input type="hidden" id="url_img" name="url_img[]" value="imagen/imagen1.jpg">
-                        <input type="hidden" id="url_gif" name="url_gif[]" value="imagen/imagen1.gif">
+                        <input type="hidden" id="id" name="id[]">
+                        <input type="hidden" id="zona_cuerpo" name="zona_cuerpo[]">
+                        <input type="hidden" id="musculo" name="musculo[]">
+                        <input type="hidden" id="nivel" name="nivel[]">
+        
+                        <input type="hidden" id="url_gif" name="url_gif[]">
 
                     </div>
 
@@ -89,7 +110,8 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <input type="hidden" name="registro" value="crear">
+            <input type="submit" class="btn btn-primary" value="Agregar"></input>
         </div>
     </form>
 </div>

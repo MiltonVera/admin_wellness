@@ -118,3 +118,4 @@ if($_POST['registro'] == 'editar'){
     die(json_encode($respuesta));
     
 }
+
