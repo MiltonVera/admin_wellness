@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Rutina">
+                    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre de la Rutina">
                 </div>
 
                 <div class="form-group col-md-3">
@@ -28,7 +28,7 @@
 
                 <div class="form-group col-md-3">
                     <label>Nivel</label>
-                    <select class="form-control" name="nivel">
+                    <select class="form-control" name="nivel_rutina">
                         <option>Basico</option>
                         <option>Intermedio</option>
                         <option>Avanzado</option>
@@ -76,10 +76,10 @@
                         </div>
 
                         <input type="hidden" id="id" name="id[]">
+                        <input type="hidden" id="nombre_ejercicio" name="nombre_ejercicio[]">
                         <input type="hidden" id="zona_cuerpo" name="zona_cuerpo[]">
                         <input type="hidden" id="musculo" name="musculo[]">
                         <input type="hidden" id="nivel" name="nivel[]">
-        
                         <input type="hidden" id="url_gif" name="url_gif[]">
 
                     </div>

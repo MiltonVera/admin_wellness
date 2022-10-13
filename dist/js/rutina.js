@@ -30,10 +30,10 @@ $(function () {
                         </div>
 
                         <input type="hidden" id="id" name="id[]">
+                        <input type="hidden" id="nombre_ejercicio" name="nombre_ejercicio[]">
                         <input type="hidden" id="zona_cuerpo" name="zona_cuerpo[]">
                         <input type="hidden" id="musculo" name="musculo[]">
                         <input type="hidden" id="nivel" name="nivel[]">
-                        <input type="hidden" id="url_img" name="url_img[]">
                         <input type="hidden" id="url_gif" name="url_gif[]">
 
                     </div>
@@ -112,10 +112,10 @@ $(function () {
 });
 
 function selectChange(){
-    console.log("Llegue a funcion");
     //TODO Ejecutar petición ajax al servidor e introducir los datos donde corresponden
     let padre = $(this).parent().parent();
     let id_elemento = padre.find("#id");
+    let nombre = padre.find("#nombre_ejercicio");
     let zona = padre.find("#zona_cuerpo");
     let musculo = padre.find("#musculo");
     let nivel = padre.find("#nivel");
@@ -123,7 +123,6 @@ function selectChange(){
     let imagen = padre.find(".imagen-ejercicio");
 
     let id = $(this).val();
-    console.log(id);
 
     //Test de ejecucion ajax en archivo JSON local
     $.ajax({
@@ -137,12 +136,13 @@ function selectChange(){
         success: function(data) {  
             console.log(data);
             id_elemento.val(id);
+            nombre.val(data.nombre)
             zona.val(data.zona);
             musculo.val(data.musculo);
             nivel.val(data.nivel);
             url_gif.val(data.url_gif);
             imagen.attr("src",data.url_gif);
-                               
+
         }
     }) 
 }

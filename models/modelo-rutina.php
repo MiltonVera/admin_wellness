@@ -12,6 +12,7 @@ if($_POST["registro"] == "buscar"){
 
     $respuesta = array(
         "id" => $id,
+        "nombre" => $resultado["nombre"],
         "zona" => $resultado["zona_cuerpo"],
         "musculo" => $resultado["musculo"],
         "nivel" => $resultado["nivel"],
@@ -53,10 +54,11 @@ if($_POST["registro"] == "buscar_todos"){
 if($_POST["registro"] == "crear"){
     $nombre  = $_POST["nombre"];
     $clasificacion  = $_POST["clasificacion"];
-    $nivel  = $_POST["nivel"];
+    $nivel_rutina  = $_POST["nivel_rutina"];
     $subnivel  = $_POST["subnivel"];
 
     $id = $_POST["id"];
+    $nombres = $_POST["nombre_ejercicio"];
     $zona_cuerpo = $_POST["zona_cuerpo"];
     $musculo = $_POST["musculo"];
     $nivel = $_POST["nivel"];
@@ -70,6 +72,7 @@ if($_POST["registro"] == "crear"){
 
         $ejercicios_entrada[] = array(
             "id" => $id[$i],
+            "nombre" => $nombres[$i],
             "zona_cuerpo" => $zona_cuerpo[$i],
             "musculo" => $musculo[$i],
             "nivel" => $nivel[$i],
@@ -83,9 +86,22 @@ if($_POST["registro"] == "crear"){
 
     $ejercicios_json = json_encode($ejercicios_entrada);
     
+    try {
+        $stmt = $conn->prepare('INSERT INTO rutina (nombre,clasificacion,nivel,sub_nivel,ejercicios) VALUES (?,?,?,?,?)');
+        $stmt->bind_param("sssss", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json);
+        $stmt->execute();
+        $respuesta= array(
+            "respuesta" => "exito"
+        );
+        $stmt->close();
+        $conn->close();
+    } catch (Exception $e) {
+        $respuesta = array(
+            'respuesta' => $e->getMessage()
+        );
+    }
 
-    die(json_encode($ejercicios_json));
-
+    die(json_encode($respuesta));
 
 }
 
