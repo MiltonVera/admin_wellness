@@ -19,7 +19,7 @@
                 <div class="form-group col-md-3">
                     <label>Clasificación</label>
                     <select class="form-control" id="clasificacion" name="clasificacion">
-                        <option>Adaptación Anatómica</option>
+                        <option value="Adaptacion" >Adaptación Anatómica</option>
                         <option>Fuerza</option>
                         <option>Hipertrofia</option>
                         <option>Calentamiento</option>
