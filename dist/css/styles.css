@@ -50,3 +50,11 @@
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
 }
+
+.login-centro{
+    display: grid;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    margin-top: 100px;
+}
