@@ -101,7 +101,7 @@ $(function () {
 <script src="dist/js/pages/dashboard2.js"></script>
 
 <?php 
-if($pagina == "crear-rutina.php" ){?>
+if($pagina == "crear-rutina.php" || $pagina == "editar-rutina.php" ){?>
 <script src="dist/js/rutina.js"></script>
 <?php } ?>
 

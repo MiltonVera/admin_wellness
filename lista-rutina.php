@@ -1,5 +1,6 @@
 <?php include_once "templates/header.php"; ?>
 <?php include_once "templates/sidebar.php" ?>
+<?php include_once "functions/connection.php" ?>
 
 
 <section class="content">
@@ -24,57 +25,35 @@
                             </thead>
                             <tbody>
                                
-                                <tr>
-                                    <td>Rutina Fantástica</td>
-                                    <td>Básico</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-blue bnt-flat">
-                                            <i class="fa-solid fa-copy"></i>
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>Rutina Chevere</td>
-                                    <td>Básico</td>
-                                    <td>2</td>
-                                    <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-blue bnt-flat">
-                                            <i class="fa-solid fa-copy"></i>
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>Hola, soy otra rutina</td>
-                                    <td>Básico</td>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-blue bnt-flat">
-                                            <i class="fa-solid fa-copy"></i>
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
+                         <?php
+                                try {
+                                    $sql = "SELECT * FROM rutina";
+                                    $resultado = $conn->query($sql);
+                                } catch (Exception $e) {
+                                    $error = $e->getMessage();
+                                    echo $error;
+                                }
+                                
+                                while($rutina = $resultado->fetch_assoc() ) { ?>
+                                        <tr>
+                                            <td><?php echo $rutina["nombre"] ?></td>
+                                            <td><?php echo $rutina["clasificacion"] ?></td>
+                                            <td><?php echo $rutina["nivel"] ?></td>
+
+                                            <td>
+                                                <a href="editar-rutina.php?id=<?php echo $rutina["id_rutina"] ?>" class="btn bg-orange btn-flat margin">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <a href="#" class="btn bg-maroon bnt-flat">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                                <a href="#" class="btn bg-blue bnt-flat">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </a>
+                                            </td>
+                                            
+                                        </tr>                             
+                          <?php } ?> 
                                 
                                 
                             </tbody>
