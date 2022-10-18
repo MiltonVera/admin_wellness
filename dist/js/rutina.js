@@ -6,8 +6,11 @@ $(function () {
     //Event Listener de darle click al boton de nuevo ejercicio
     boton.addEventListener("click", function (e) {
         e.preventDefault();
-        let ejercicios = document.querySelector("#ejercicios");
+
         let ejercicio = document.createElement("div");
+
+
+
         ejercicio.classList.add("tarjeta");
         ejercicio.classList.add("col-md-3");
         ejercicio.classList.add("m-3");
@@ -51,6 +54,13 @@ $(function () {
 
                     </div>
 
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="repeticion">Descanso</label>
+                            <input type="number" class="form-control" name="descanso[]" min=0 max=10 step=".5" placeholder="Minutos de Descanso">
+                        </div>
+                    </div>
+
     `;
         ejercicio.appendChild(eliminar);
         //Cada que creamos un elemento le añadimos su event listener
@@ -89,7 +99,7 @@ $(function () {
         }) 
         
         //Añadimos el ejercicio a los ejercicios
-        ejercicios.prepend(ejercicio);
+        $(this).before(ejercicio);
 
 
         //Actualizamos el select para que funcione correctamente
@@ -146,3 +156,5 @@ function selectChange(){
         }
     }) 
 }
+
+

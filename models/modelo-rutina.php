@@ -55,7 +55,7 @@ if($_POST["registro"] == "crear"){
     $nombre  = $_POST["nombre"];
     $clasificacion  = $_POST["clasificacion"];
     $nivel_rutina  = $_POST["nivel_rutina"];
-    $subnivel  = $_POST["subnivel"];
+    $subnivel  = (int)$_POST["subnivel"];
 
     $id = $_POST["id"];
     $nombres = $_POST["nombre_ejercicio"];
@@ -65,6 +65,7 @@ if($_POST["registro"] == "crear"){
     $url_gif = $_POST["url_gif"];
     $serie = $_POST["serie"];
     $repeticion = $_POST["repeticion"];
+    $descanso = $_POST["descanso"];
     
     $ejercicios_entrada = array();
 
@@ -78,7 +79,8 @@ if($_POST["registro"] == "crear"){
             "nivel" => $nivel[$i],
             "url_gif" => $url_gif[$i],
             "serie" => $serie[$i],
-            "repeticion" => $repeticion[$i]
+            "repeticion" => $repeticion[$i],
+            "descanso" => $descanso[$i]
         
         );
     }
@@ -88,7 +90,7 @@ if($_POST["registro"] == "crear"){
     
     try {
         $stmt = $conn->prepare('INSERT INTO rutina (nombre,clasificacion,nivel,sub_nivel,ejercicios) VALUES (?,?,?,?,?)');
-        $stmt->bind_param("sssss", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json);
+        $stmt->bind_param("sssis", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json);
         $stmt->execute();
         $respuesta= array(
             "respuesta" => "exito"
@@ -102,6 +104,89 @@ if($_POST["registro"] == "crear"){
     }
 
     die(json_encode($respuesta));
+
+}
+if($_POST["registro"] == "editar"){
+
+
+
+    $id_editar  = (int)$_POST["id_editar"];
+    $nombre  = $_POST["nombre"];
+    $clasificacion  = $_POST["clasificacion"];
+    $nivel_rutina  = $_POST["nivel_rutina"];
+    $subnivel  = (int)$_POST["subnivel"];
+
+    $id = $_POST["id"];
+    $nombres = $_POST["nombre_ejercicio"];
+    $zona_cuerpo = $_POST["zona_cuerpo"];
+    $musculo = $_POST["musculo"];
+    $nivel = $_POST["nivel"];
+    $url_gif = $_POST["url_gif"];
+    $serie = $_POST["serie"];
+    $repeticion = $_POST["repeticion"];
+    $descanso = $_POST["descanso"];
+    
+    $ejercicios_entrada = array();
+
+    for($i = 0;$i<count($id);$i++){
+
+        $ejercicios_entrada[] = array(
+            "id" => $id[$i],
+            "nombre" => $nombres[$i],
+            "zona_cuerpo" => $zona_cuerpo[$i],
+            "musculo" => $musculo[$i],
+            "nivel" => $nivel[$i],
+            "url_gif" => $url_gif[$i],
+            "serie" => $serie[$i],
+            "repeticion" => $repeticion[$i],
+            "descanso" => $descanso[$i]
+        
+        );
+    }
+
+
+    $ejercicios_json = json_encode($ejercicios_entrada);
+    
+    try {
+        $stmt = $conn->prepare('UPDATE rutina SET nombre = ?,clasificacion = ?,nivel = ?,sub_nivel = ?,ejercicios = ? WHERE id_rutina=?');
+        $stmt->bind_param("sssisi", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json,$id_editar);
+        $stmt->execute();
+        $respuesta= array(
+            "respuesta" => "exito"
+        );
+        $stmt->close();
+        $conn->close();
+    } catch (Exception $e) {
+        $respuesta = array(
+            'respuesta' => $e->getMessage()
+        );
+    }
+
+    die(json_encode($respuesta));
+
+}
+
+if($_POST["registro"] == "eliminar"){
+
+    $id = (int) $_POST["id"];
+
+    try {
+        $stmt = $conn->prepare('DELETE FROM rutina WHERE id_rutina=?');
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $respuesta= array(
+            "respuesta" => "exito"
+        );
+        $stmt->close();
+        $conn->close();
+    } catch (Exception $e) {
+        $respuesta = array(
+            'respuesta' => $e->getMessage()
+        );
+    }
+
+    die(json_encode($respuesta));
+
 
 }
 

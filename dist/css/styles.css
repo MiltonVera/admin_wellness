@@ -23,7 +23,7 @@
     background-color: gris;
     padding: 30px;
     width: 300px;
-    height: 300px;
+    height: auto;
     border-radius: 28px 28px 28px 28px;
     -moz-border-radius: 28px 28px 28px 28px;
     -webkit-border-radius: 28px 28px 28px 28px;

@@ -57,6 +57,49 @@ $(function() {
         })
     });
 
+    $('.borrar').on('click', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        let tipo = $(this).attr('data-tipo');
+        console.log(id);
+        console.log(tipo);
+
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "Esta accion no se puede revertir",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Borrar'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Borrado!',
+                    'Ha sido borrado',
+                    'success'
+                )
+                $.ajax({
+                    type: 'post',
+                    data: {
+                        'id': id,
+                        'registro': 'eliminar'
+
+                    },
+                    url: 'models/modelo-' + tipo + '.php',
+                    success: function(data) {                       
+                        jQuery('[data-id="' + id + '"]').parents('tr').remove();
+                        Swal.fire(
+                            'Correcto',
+                            'Se elimino correctamente',
+                            'success'
+                        )
+                    }
+                })
+            }
+        })
+    });
+
 
 
 });
