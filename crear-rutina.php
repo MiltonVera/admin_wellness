@@ -96,6 +96,13 @@
                         </div>
 
                     </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="repeticion">Descanso</label>
+                            <input type="number" class="form-control" name="descanso[]" min=0 max=10 step=".5" placeholder="Minutos de Descanso">
+                        </div>
+                    </div>
                     <button class="btn btn-danger col-12" id="eliminar">Eliminar</button>
                 </div>
 
