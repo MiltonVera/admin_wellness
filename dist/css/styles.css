@@ -50,6 +50,37 @@
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
 }
+
+
+.login-centro{
+    display: grid;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+@media (max-width: 480px) {
+    .wrapper{
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+        width: min(95%, 360px);
+    }   
+}
+
+#vista-login{
+    background-image: url('../img/wellness-center.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#login__logo-img{
+    margin: 0 auto;
+    width: 100%;
+}
+
+
 /*Entrenamiento*/
 .ver-entrenamiento{
     height: 40px;
