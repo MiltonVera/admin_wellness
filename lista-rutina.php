@@ -41,13 +41,16 @@
                                             <td><?php echo $rutina["nivel"] ?></td>
 
                                             <td>
-                                                <a href="editar-rutina.php?id=<?php echo $rutina["id_rutina"] ?>" class="btn bg-orange btn-flat margin">
+                                                <a href="editar-rutina.php?id=<?php echo $rutina["id_rutina"] ?>" class="btn mx-2 bg-orange btn-flat margin">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="#" data-tipo="rutina" data-id="<?php echo $rutina["id_rutina"] ?>" class="btn bg-maroon bnt-flat borrar">
+                                                <a href="#" data-id="<?php echo $rutina["id_rutina"]?>" class="btn mx-2 bg-indigo bnt-flat modal_rutina">
+                                                    <i class="fa-solid fa-eye"></i>    
+                                                </a>
+                                                <a href="#" data-tipo="rutina" data-id="<?php echo $rutina["id_rutina"] ?>" class="btn mx-2 bg-maroon bnt-flat borrar">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
-                                                <a href="editar-rutina.php?id=<?php echo $rutina["id_rutina"]?>&copiar=True" class="btn bg-blue bnt-flat">
+                                                <a href="editar-rutina.php?id=<?php echo $rutina["id_rutina"]?>&copiar=True" class="btn mx-2 bg-blue bnt-flat">
                                                     <i class="fa-solid fa-copy"></i>
                                                 </a>
                                             </td>

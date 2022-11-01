@@ -118,7 +118,7 @@
 
         <div class="card-footer">
             <input type="hidden" name="registro" value="crear">
-            <input type="submit" class="btn btn-primary" value="Agregar"></input>
+            <input type="submit" class="btn btn-success col-12" value="Generar Rutina"></input>
         </div>
     </form>
 </div>

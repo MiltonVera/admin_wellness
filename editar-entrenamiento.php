@@ -2,11 +2,23 @@
 <?php include_once "templates/sidebar.php" ?>
 <?php include_once "functions/connection.php" ?>
 
+<?php 
 
+$id = $_GET['id'];
+if(!filter_var($id,FILTER_VALIDATE_INT)){
+    die('Error se cambio el id manualmente');
+}
+
+$sql = "SELECT * FROM entrenamiento WHERE id_entrenamiento=$id";
+$resultado = $conn->query($sql);
+$entrenamiento = $resultado->fetch_assoc();
+
+
+?>
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Creador de Entrenamiento</h3>
+        <h3 class="card-title">Editor de Entrenamiento</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
@@ -15,44 +27,46 @@
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del Entrenamiento">
+                    <input type="text" class="form-control" name="nombre"  value="<?php echo $entrenamiento["nombre"]; ?>" id="nombre">
                 </div>
 
                 <div class="form-group col-md-3">
                     <label>Clasificación</label>
                     <select class="form-control" id="clasificacion" name="clasificacion">
-                        <option>Adaptación Anatómica</option>
-                        <option>Fuerza</option>
-                        <option>Hipertrofia</option>
+                        <option <?php echo $entrenamiento["clasificacion"] == 'Adaptación Anatómica' ? "selected='Selected'" : "" ?> >Adaptación Anatómica</option>
+                        <option <?php echo $entrenamiento["clasificacion"] == 'Fuerza' ? "selected='Selected'" : "" ?> >Fuerza</option>
+                        <option <?php echo $entrenamiento["clasificacion"] == 'Hipertrofia' ? "selected='Selected'" : "" ?> >Hipertrofia</option>
                     </select>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label>Nivel</label>
                     <select class="form-control" id="nivel_entrenamiento" name="nivel_entrenamiento">
-                        <option>Basico</option>
-                        <option>Intermedio</option>
-                        <option>Avanzado</option>
+                        <option <?php echo $entrenamiento["nivel"] == 'Basico' ? "selected='Selected'" : "" ?> >Basico</option>
+                        <option <?php echo $entrenamiento["nivel"] == 'Intermedio' ? "selected='Selected'" : "" ?>>Intermedio</option>
+                        <option <?php echo $entrenamiento["nivel"] == 'Avanzado' ? "selected='Selected'" : "" ?>>Avanzado</option>
                     </select>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label>Sub-Nivel</label>
                     <select class="form-control" id="subnivel_entrenamiento" name="subnivel_entrenamiento">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option <?php echo $entrenamiento["sub_nivel"] == '1' ? "selected='Selected'" : "" ?> >1</option>
+                        <option <?php echo $entrenamiento["sub_nivel"] == '2' ? "selected='Selected'" : "" ?> >2</option>
+                        <option <?php echo $entrenamiento["sub_nivel"] == '3' ? "selected='Selected'" : "" ?> >3</option>
                     </select>
                 </div>
             </div>
 
             <div class="row">
-                <h2 class="col-12" style="font-size:18ox ;">Rutinas</h2>
+                <h2 class="col-12" style="font-size:18px ;">Rutinas</h2>
             </div>
 
-
+            <?php
+            $rutinas = json_decode($entrenamiento["rutinas"], true);
+            ?>
             <div class="row" id="rutinas">
-
+            <?php foreach ($rutinas as $rutina) { ?>
                 <div class="tarjeta col-md-3 m-3">
 
                     <label>Rutina</label>
@@ -70,7 +84,7 @@
                                     echo $error;
                                 }
                                 while ($row = $resultado->fetch_assoc()) { ?>
-                                    <option value="<?php echo $row["id_rutina"] ?>"><?php echo $row["nombre"] ?></option>
+                                    <option <?php echo $rutina["nombre"] == $row["nombre"] ? "selected='Selected'" : "" ?>  value="<?php echo $row["id_rutina"] ?>"><?php echo $row["nombre"] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -80,11 +94,11 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="nivel">Nivel</label>
-                            <input type="text" id="nivel" class="form-control" readonly>
+                            <input type="text" id="nivel" class="form-control" value="<?php echo $rutina["nivel"] ?>" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="subnivel">Subnivel</label>
-                            <input type="text" id="sub_nivel" class="form-control" readonly>
+                            <input type="text" id="sub_nivel" class="form-control" value="<?php echo $rutina["sub_nivel"] ?>" readonly>
                         </div>
                     </div>
 
@@ -94,6 +108,7 @@
                     </div>
 
                 </div>
+                <?php } ?>
 
                 <button class="tarjeta col-md-4 m-3" id="agregar">
                     <i class="fa-solid fa-plus"></i>
@@ -107,8 +122,8 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <input type="hidden" name="registro" value="crear">
-            <input type="submit" class="btn btn-success col-12" value="Generar Entrenamiento">
+            <input type="hidden" name="registro" value="editar">
+            <input type="submit" class="btn btn-success col-12" value="Editar Entrenamiento">
         </div>
     </form>
 </div>

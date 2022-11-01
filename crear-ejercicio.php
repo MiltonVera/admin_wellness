@@ -85,7 +85,7 @@
 
         <div class="card-footer">
             <input type="hidden" name="registro" value="nuevo">
-            <input type="submit" class="btn btn-primary"></input>
+            <input type="submit" class="btn btn-success col-12" value="Agregar Ejercicio"></input>
         </div>
     </form>
 </div>

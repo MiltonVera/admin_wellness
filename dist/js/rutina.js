@@ -122,7 +122,6 @@ $(function () {
 });
 
 function selectChange(){
-    //TODO Ejecutar petición ajax al servidor e introducir los datos donde corresponden
     let padre = $(this).parent().parent();
     let id_elemento = padre.find("#id");
     let nombre = padre.find("#nombre_ejercicio");
@@ -134,7 +133,7 @@ function selectChange(){
 
     let id = $(this).val();
 
-    //Test de ejecucion ajax en archivo JSON local
+    //Test de ejecucion ajax
     $.ajax({
         type: 'POST',
         url: 'models/modelo-rutina.php',
