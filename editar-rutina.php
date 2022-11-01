@@ -145,10 +145,10 @@ $rutina = $resultado->fetch_assoc();
             <?php if (!$crear) { ?>
                 <input type="hidden" name="id_editar" value="<?php echo $id; ?>">
                 <input type="hidden" name="registro" value="editar">
-                <input type="submit" class="btn btn-primary" value="Editar"></input>
+                <input type="submit" class="btn btn-success col-12" value="Editar Rutina"></input>
             <?php } else { ?>
                 <input type="hidden" name="registro" value="crear">
-                <input type="submit" class="btn btn-primary" value="Copiar"></input>
+                <input type="submit" class="btn btn-success col-12" value="Copiar Rutina"></input>
             <?php } ?>
 
 

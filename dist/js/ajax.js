@@ -14,7 +14,10 @@ $(function() {
                     'Se guardo correctamente',
                     'success'
                 )
-                console.log(data);
+                
+                setTimeout(() => {
+                    window.location.replace(data.regreso);
+                }, 2000);
             }
         })
     });
@@ -40,7 +43,7 @@ $(function() {
                         'Se guardo correctamente',
                         'success'
                     );
-                    $("#guardar-registro-archivo").trigger("reset");
+                    console.log(resultado.regreso)
                     setTimeout(() => {
                         window.location.replace(resultado.regreso);
                     }, 2000);

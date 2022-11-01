@@ -100,7 +100,7 @@ $ejercicio = $resultado->fetch_assoc();
         <div class="card-footer">
             <input type="hidden" name="id" value="<?php echo $ejercicio["id_ejercicio"] ?>">
             <input type="hidden" name="registro" value="editar">
-            <input type="submit" class="btn btn-primary"></input>
+            <input type="submit" class="btn btn-success col-12" value="Editar Ejercicio"></input>
         </div>
     </form>
 </div>

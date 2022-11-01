@@ -2,6 +2,8 @@
 
 include_once "../functions/connection.php";
 
+
+
 if($_POST["registro"] == "buscar"){
     $id  = (int)$_POST["id"];
 
@@ -16,7 +18,7 @@ if($_POST["registro"] == "buscar"){
         "zona" => $resultado["zona_cuerpo"],
         "musculo" => $resultado["musculo"],
         "nivel" => $resultado["nivel"],
-        "url_gif" => $resultado["url_gif"],
+        "url_gif" => $resultado["url_gif"]
     );
 
     die(json_encode($respuesta));
@@ -93,13 +95,15 @@ if($_POST["registro"] == "crear"){
         $stmt->bind_param("sssis", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json);
         $stmt->execute();
         $respuesta= array(
-            "respuesta" => "exito"
+            "respuesta" => "exito",
+            'regreso' => "/lista-rutina.php"
         );
         $stmt->close();
         $conn->close();
     } catch (Exception $e) {
         $respuesta = array(
-            'respuesta' => $e->getMessage()
+            'respuesta' => $e->getMessage(),
+            'regreso' => "/lista-rutina.php"
         );
     }
 
@@ -152,13 +156,15 @@ if($_POST["registro"] == "editar"){
         $stmt->bind_param("sssisi", $nombre,$clasificacion,$nivel_rutina,$subnivel,$ejercicios_json,$id_editar);
         $stmt->execute();
         $respuesta= array(
-            "respuesta" => "exito"
+            "respuesta" => "exito",
+            'regreso' => "/lista-rutina.php"
         );
         $stmt->close();
         $conn->close();
     } catch (Exception $e) {
         $respuesta = array(
-            'respuesta' => $e->getMessage()
+            'respuesta' => $e->getMessage(),
+            'regreso' => "/lista-rutina.php"
         );
     }
 

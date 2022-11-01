@@ -51,6 +51,7 @@
     border: 0px solid #000000;
 }
 
+
 .login-centro{
     display: grid;
     align-items: center;
@@ -78,6 +79,8 @@
     margin: 0 auto;
     width: 100%;
 }
+
+
 /*Entrenamiento*/
 .ver-entrenamiento{
     height: 40px;
