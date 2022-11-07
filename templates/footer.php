@@ -95,7 +95,7 @@ $(function () {
 <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
@@ -112,6 +112,7 @@ if($pagina == "crear-entrenamiento.php" ){?>
 
 <script src="dist/js/ajax.js"></script>
 <script src="dist/js/app.js"></script>
+
 
 </body>
 </html>
