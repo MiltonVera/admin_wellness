@@ -106,7 +106,7 @@ if($pagina == "crear-rutina.php" || $pagina == "editar-rutina.php" ){?>
 <?php } ?>
 
 <?php 
-if($pagina == "crear-entrenamiento.php" ){?>
+if($pagina == "crear-entrenamiento.php"  || $pagina == "editar-entrenamiento.php"){?>
 <script src="dist/js/entrenamiento.js"></script>
 <?php } ?>
 

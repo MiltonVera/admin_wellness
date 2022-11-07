@@ -1,7 +1,7 @@
 $(function () {
     /*Funcion que añade un nuevo ejercicio*/
     let boton = document.querySelector("#agregar");
-    let eliminar = document.querySelector("#eliminar");
+    let eliminar = document.querySelectorAll("#eliminar");
 
     //Event Listener de darle click al boton de nuevo ejercicio
     boton.addEventListener("click", function (e) {
@@ -111,10 +111,11 @@ $(function () {
 
     });
 
-    eliminar.addEventListener("click", function (e) {
+    eliminar.forEach(e => e.addEventListener("click",function (e) {
         e.preventDefault();
         $(this).parent().parent().remove();
-    });
+    }))
+
 
     //Le ponemos el change event listener al select
     let select = $(".select2");
@@ -122,15 +123,9 @@ $(function () {
     //select.select2("NULL", "---Seleccionar---");
 
     //Colocamos el event listener al boton de ver
-    let ver = $(".ver-entrenamiento")[0];
-
     //Funcion que al dar click llama al modal
-    ver.addEventListener("click", e => {
-        e.preventDefault();
-        modal(e);
-    });
-
-
+    let botonesVer = document.querySelectorAll(".ver-entrenamiento");
+    botonesVer.forEach(boton => boton.addEventListener("click",e => {e.preventDefault();modal(e);}))
 
 });
 

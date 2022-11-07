@@ -34,12 +34,14 @@
                         <option>Tren Superior</option>
                         <option>Tren Inferior</option>
                         <option>Core</option>
+                        <option>General</option>
                     </select>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Musculo</label>
                     <select class="select2" style="width: 100%;" name="musculo">
+                        <option>General</option>
                         <option>Triceps</option>
                         <option>Pecho</option>
                         <option>Deltoides</option>

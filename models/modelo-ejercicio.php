@@ -11,14 +11,14 @@ $musculo = $_POST["musculo"];
 
 if($_POST["registro"] == "nuevo"){
    
-
+    $nombreImagen = md5(uniqid(rand(),true));
     //-----Subimos el gif de ejecución
     if(!is_dir($directorio_gif)){
         mkdir($directorio_gif,0755,true);
     }
     //Mover el archivo
-    if(move_uploaded_file($_FILES['ejecucion']['tmp_name'],$directorio_gif . $nombre.".gif")){
-        $imagen_ejecucion_url =substr($directorio_gif,3) .$nombre.".gif";
+    if(move_uploaded_file($_FILES['ejecucion']['tmp_name'],$directorio_gif . $nombreImagen.".gif")){
+        $imagen_ejecucion_url =substr($directorio_gif,3) .$nombreImagen.".gif";
         $imagen_ejecucion_resultado = "Se subio correctamente";
     }else{
         $respuesta = array(

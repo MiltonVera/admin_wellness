@@ -131,13 +131,15 @@ if($_POST["registro"] == "editar"){
 
         $rutinas = json_encode($rutinas);
 
-
+        
         $stmt = $conn->prepare('UPDATE entrenamiento SET nombre = ?,clasificacion = ?,nivel = ?,sub_nivel = ?,rutinas = ? WHERE id_entrenamiento=?');
         $stmt->bind_param("sssisi", $nombre,$clasificacion,$nivel_entrenamiento,$subnivel_entrenamiento,$rutinas,$id);
         $stmt->execute();
         $respuesta= array(
-            "respuesta" => "exito"
+            "respuesta" => "exito",
+            'regreso' => "/lista-entrenamiento.php"
         );
+        $conn->autocommit(true);
         $stmt->close();
         $conn->close();
     } catch (Exception $e) {
@@ -158,7 +160,7 @@ if($_POST["registro"] == "eliminar"){
     $id = (int) $_POST["id"];
 
     try {
-        $stmt = $conn->prepare('DELETE FROM rutina WHERE id_rutina=?');
+        $stmt = $conn->prepare('DELETE FROM entrenamiento WHERE id_entrenamiento=?');
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $respuesta= array(

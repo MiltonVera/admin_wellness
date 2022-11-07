@@ -48,12 +48,14 @@ $ejercicio = $resultado->fetch_assoc();
                         <option  <?php echo $ejercicio["zona"] == 'Tren Superior' ? "selected='Selected'" : "" ?>>Tren Superior</option>
                         <option  <?php echo $ejercicio["zona"] == 'Tren Inferior' ? "selected='Selected'" : "" ?>>Tren Inferior</option>
                         <option  <?php echo $ejercicio["zona"] == 'Core' ? "selected='Selected'" : "" ?>>Core</option>
+                        <option  <?php echo $ejercicio["zona"] == 'General' ? "selected='Selected'" : "" ?>>General</option>
                     </select>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Musculo</label>
                     <select class="select2" style="width: 100%;" name="musculo">
+                        <option  <?php echo $ejercicio["musculo"] == 'General' ? "selected='Selected'" : "" ?>>General</option>
                         <option  <?php echo $ejercicio["musculo"] == 'Triceps' ? "selected='Selected'" : "" ?>>Triceps</option>
                         <option  <?php echo $ejercicio["musculo"] == 'Pecho' ? "selected='Selected'" : "" ?>>Pecho</option>
                         <option  <?php echo $ejercicio["musculo"] == 'Deltoides' ? "selected='Selected'" : "" ?>>Deltoides</option>

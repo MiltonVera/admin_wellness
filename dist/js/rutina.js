@@ -1,7 +1,7 @@
 $(function () {
     /*Funcion que añade un nuevo ejercicio*/
     let boton = document.querySelector("#agregar");
-    let eliminar = document.querySelector("#eliminar");
+    let eliminar = document.querySelectorAll("#eliminar");
 
     //Event Listener de darle click al boton de nuevo ejercicio
     boton.addEventListener("click", function (e) {
@@ -14,11 +14,13 @@ $(function () {
         ejercicio.classList.add("tarjeta");
         ejercicio.classList.add("col-md-3");
         ejercicio.classList.add("m-3");
-        eliminar = document.createElement("button");
-        eliminar.classList.add("btn");
-        eliminar.classList.add("btn-danger");
-        eliminar.classList.add("col-12");
-        eliminar.innerHTML = `Eliminar`;
+
+        elim = document.createElement("button");
+        elim.classList.add("btn");
+        elim.classList.add("btn-danger");
+        elim.classList.add("col-12");
+        elim.innerHTML = `Eliminar`;
+
         ejercicio.innerHTML = `
     
                     <div class="row">
@@ -29,7 +31,7 @@ $(function () {
                             </select>
                         </div>
                         <div class="col-4">
-                            <img src="image/prueba.jpg" class="imagen-ejercicio" alt="Ejercicio">
+                            <img src="image/placeholder.jpeg" class="imagen-ejercicio" alt="Ejercicio">
                         </div>
 
                         <input type="hidden" id="id" name="id[]">
@@ -62,20 +64,20 @@ $(function () {
                     </div>
 
     `;
-        ejercicio.appendChild(eliminar);
+        
         //Cada que creamos un elemento le añadimos su event listener
-        eliminar.addEventListener("click", function(e){ 
+        elim.addEventListener("click", function(e){ 
             e.preventDefault();
             $(this).parent().remove();
         });
+
+        ejercicio.appendChild(elim);
         //Buscamos el select
         let select = $(ejercicio).find(".select2");
 
         //Le añadimos un event listener cuando cambie
         select.on("change",selectChange);
         
-
-
         //Agregar los select de ejercicios
         $.ajax({
             type: 'POST',
@@ -106,12 +108,13 @@ $(function () {
         $('.select2').select2();
         $('.select2').select2("NULL", "---Seleccionar---");
 
-    });
+    }); // Fin de elemento dinamico
 
-    eliminar.addEventListener("click", function(e){ 
+    eliminar.forEach(e => e.addEventListener("click",function(e){ 
         e.preventDefault();
         $(this).parent().remove();
-    });
+    }))
+
 
     //Le ponemos el change event listener al select
     let select = $(".select2");
