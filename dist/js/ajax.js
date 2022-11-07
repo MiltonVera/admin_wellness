@@ -16,7 +16,7 @@ $(function() {
                 )
                 
                 setTimeout(() => {
-                    window.location.replace(data.regreso);
+                    //window.location.replace(data.regreso);
                 }, 2000);
             }
         })

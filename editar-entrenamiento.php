@@ -5,6 +5,7 @@
 <?php 
 
 $id = $_GET['id'];
+$crear = $_GET['copiar'];
 if(!filter_var($id,FILTER_VALIDATE_INT)){
     die('Error se cambio el id manualmente');
 }
@@ -27,7 +28,7 @@ $entrenamiento = $resultado->fetch_assoc();
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre"  value="<?php echo $entrenamiento["nombre"]; ?>" id="nombre">
+                    <input type="text" class="form-control" name="nombre" value="<?php echo !isset($_GET["copiar"]) ? $entrenamiento["nombre"] : "Copia de ".$entrenamiento["nombre"] ;?>" id="nombre">
                 </div>
 
                 <div class="form-group col-md-3">
@@ -64,9 +65,12 @@ $entrenamiento = $resultado->fetch_assoc();
 
             <?php
             $rutinas = json_decode($entrenamiento["rutinas"], true);
+            
             ?>
             <div class="row" id="rutinas">
             <?php foreach ($rutinas as $rutina) { ?>
+
+
                 <div class="tarjeta col-md-3 m-3">
 
                     <label>Rutina</label>
@@ -84,7 +88,7 @@ $entrenamiento = $resultado->fetch_assoc();
                                     echo $error;
                                 }
                                 while ($row = $resultado->fetch_assoc()) { ?>
-                                    <option <?php echo $rutina["nombre"] == $row["nombre"] ? "selected='Selected'" : "" ?>  value="<?php echo $row["id_rutina"] ?>"><?php echo $row["nombre"] ?></option>
+                                    <option <?php echo $rutina["id_rutina"] == $row["id_rutina"] ? "selected" : "" ?>  value="<?php echo $row["id_rutina"] ?>"><?php echo $row["nombre"] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -122,8 +126,14 @@ $entrenamiento = $resultado->fetch_assoc();
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <input type="hidden" name="registro" value="editar">
-            <input type="submit" class="btn btn-success col-12" value="Editar Entrenamiento">
+            <?php if (!$crear) { ?>
+                <input type="hidden" name="registro" value="editar">
+                <input type="hidden" name="id"  value="<?php echo $entrenamiento["id_entrenamiento"]; ?>">
+                <input type="submit" class="btn btn-success col-12" value="Editar Entrenamiento">
+            <?php } else { ?>
+                <input type="hidden" name="registro" value="crear">
+                <input type="submit" class="btn btn-success col-12" value="Copiar Entrenamiento"></input>
+            <?php } ?>
         </div>
     </form>
 </div>

@@ -72,7 +72,7 @@
                             </select>
                         </div>
                         <div class="col-4">
-                            <img src="image/prueba.jpg" class="imagen-ejercicio" alt="Ejercicio">
+                            <img src="image/placeholder.jpeg" class="imagen-ejercicio" alt="Ejercicio">
                         </div>
 
                         <input type="hidden" id="id" name="id[]">
