@@ -51,7 +51,7 @@
     border: 0px solid #000000;
 }
 
-
+/* Login */
 .login-centro{
     display: grid;
     align-items: center;
@@ -130,4 +130,20 @@
 .cerrar{
     margin: 10px auto;
 
+}
+
+/* Accordion */
+#card-header--h2_Resultado_Buscador_alumno {
+    display: flex;
+    justify-content: space-between;
+}
+
+#card-header--h2--button_Resultado_Buscador_alumno {
+    width: 75%;
+}
+
+#card-header--h2--div_Resultado_Buscador_alumno {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
 }
