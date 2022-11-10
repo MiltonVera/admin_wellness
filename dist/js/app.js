@@ -81,7 +81,6 @@ $(function () {
 function modal_app(e) {
     console.log("Corriendo app")
     let id = $(e.currentTarget).attr('data-id');
-    console.log(e.currentTarget);
     let padre = $(".table");
     let modal = document.createElement("div");
     //Creamos la ventana modal
