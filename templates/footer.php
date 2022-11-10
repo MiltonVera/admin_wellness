@@ -13,17 +13,13 @@
 
 
 <?php 
-if(substr($pagina,0,5) == "lista"){?>
+if(substr($pagina,0,5) == "lista" || $pagina == "modal.php" ){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 
 
 <script>
@@ -63,7 +59,7 @@ if(substr($pagina,0,5) == "lista"){?>
 
 
 <?php 
-if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar"){?>
+if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar" || $pagina == "modal.php"){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -81,24 +77,12 @@ $(function () {
 <?php } ?>
 
 
-
-
-
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
-<!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
 
-
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
 
 <?php 
 if($pagina == "crear-rutina.php" || $pagina == "editar-rutina.php" ){?>
@@ -108,6 +92,11 @@ if($pagina == "crear-rutina.php" || $pagina == "editar-rutina.php" ){?>
 <?php 
 if($pagina == "crear-entrenamiento.php"  || $pagina == "editar-entrenamiento.php"){?>
 <script src="dist/js/entrenamiento.js"></script>
+<?php } ?>
+
+<?php 
+if($pagina == "modal.php"){?>
+<script src="dist/js/modal.js"></script>
 <?php } ?>
 
 <script src="dist/js/ajax.js"></script>
