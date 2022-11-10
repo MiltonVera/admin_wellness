@@ -32,12 +32,49 @@ if($_POST["registro"] == "buscar_todos"){
 
     $respuesta = array(
         "id" => [],
-        "nombre" => []
+        "clasificacion" => [],
+        "nombre" => [],
+        "nivel" => [],
+        "subnivel" => [],
+        "ejercicios" => [],
     );
 
     while($row = $resultado->fetch_assoc() ) { 
         $respuesta["id"][] = $row["id_rutina"];
+        $respuesta["clasificacion"][] = $row["clasificacion"];
         $respuesta["nombre"][] = $row["nombre"];
+        $respuesta["nivel"][] = $row["nivel"];
+        $respuesta["subnivel"][] = $row["sub_nivel"];
+        $respuesta["ejercicios"][] = json_decode($row["ejercicios"],true);
+
+    }
+    die(json_encode($respuesta));
+
+
+}
+
+if($_POST["registro"] == "buscar_entrenamientos"){
+    
+    $stmt = $conn->prepare("SELECT * FROM entrenamiento");
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    $respuesta = array(
+        "id" => [],
+        "clasificacion" => [],
+        "nombre" => [],
+        "nivel" => [],
+        "subnivel" => [],
+        "rutinas" => [],
+    );
+
+    while($row = $resultado->fetch_assoc() ) { 
+        $respuesta["id"][] = $row["id_entrenamiento"];
+        $respuesta["clasificacion"][] = $row["clasificacion"];
+        $respuesta["nombre"][] = $row["nombre"];
+        $respuesta["nivel"][] = $row["nivel"];
+        $respuesta["subnivel"][] = $row["sub_nivel"];
+        $respuesta["rutinas"][] = json_decode($row["rutinas"],true);
 
     }
     die(json_encode($respuesta));
