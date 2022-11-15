@@ -1,6 +1,6 @@
 <?php include_once "templates/header.php"; ?>
 <?php include_once "templates/sidebar.php" ?>
-
+<?php include_once "functions/connection.php" ?>
 
 <section class="content">
     <div class="container-fluid">
@@ -9,11 +9,11 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Administradores</h3>
+                        <h3 class="card-title">Ejercicios</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="admins" class="table table-bordered table-striped">
+                        <table id="tabla" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Portada</th>
@@ -21,57 +21,35 @@
                                     <th>Zona de Cuerpo</th>
                                     <th>Músculo</th>
                                     <th>Nivel</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                
+                        <?php
+                        try {
+                            $sql = "SELECT * FROM ejercicio";
+                            $resultado = $conn->query($sql);
+                        } catch (Exception $e) {
+                            $error = $e->getMessage();
+                            echo $error;
+                        }
+                        
+                        while($ejercicio = $resultado->fetch_assoc() ) { ?>
                                 <tr>
-                                    <td><img width="100" src="image\prueba.jpg" /></td>
-                                    <td>Press Militar</td>
-                                    <td>Tren Superior</td>
-                                    <td>Pecho</td>
+                                    <td><img width="100" src="<?php echo $ejercicio["url_gif"] ?>" /></td>
+                                    <td><?php echo $ejercicio["nombre"] ?></td>
+                                    <td><?php echo $ejercicio["zona_cuerpo"] ?></td>
+                                    <td><?php echo $ejercicio["musculo"] ?></td>
+                                    <td><?php echo $ejercicio["nivel"] ?></td>
                                     <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
+                                        <a href="editar-ejercicio.php?id=<?php echo $ejercicio["id_ejercicio"] ?>" class="btn bg-orange btn-flat margin">
                                             <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
                                     
-                                </tr>
-                                <tr>
-                                    <td><img width="100" src="./image/prueba.jpg" /></td>
-                                    <td>Press de Banca</td>
-                                    <td>Tren Superior</td>
-                                    <td>Pecho</td>
-                                    <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td><img width="100" src="./image/prueba.jpg" /></td>
-                                    <td>Otro Press</td>
-                                    <td>Tren Superior</td>
-                                    <td>Pecho</td>
-                                    <td>
-                                        <a href="#" class="btn bg-orange btn-flat margin">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="#" class="btn bg-maroon bnt-flat">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                    
-                                </tr>
-                                
-                                
+                                </tr>                             
+                          <?php } ?>      
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -80,6 +58,7 @@
                                     <th>Zona de Cuerpo</th>
                                     <th>Músculo</th>
                                     <th>Nivel</th>
+                                    <th>Editar</th>
                                 </tr>
                             </tfoot>
                         </table>

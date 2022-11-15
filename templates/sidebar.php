@@ -36,7 +36,7 @@
                with font-awesome or any other icon font library -->
           
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="/" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -54,13 +54,13 @@
             </a>
             <ul class="nav nav-treeview ml-3">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="crear-entrenamiento.php" class="nav-link">
                   <i class="fas fa-plus"></i>
                   <p>Crear Entrenamiento</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="lista-entrenamiento.php" class="nav-link">
                   <i class="fa-solid fa-eye"></i>
                   <p>Ver Entrenamientos</p>
                 </a>
@@ -77,13 +77,13 @@
             </a>
             <ul class="nav nav-treeview ml-3">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="crear-rutina.php" class="nav-link">
                   <i class="fas fa-plus"></i>
                   <p>Agregar Rutina</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="lista-rutina.php" class="nav-link">
                   <i class="fa-solid fa-eye"></i>
                   <p>Ver Rutinas</p>
                 </a>

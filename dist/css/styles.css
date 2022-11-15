@@ -1,8 +1,8 @@
 
 :root{
-    --azul : #08D9D6;
+    --azul : #08d9d68a;
     --negro : #252A34;
-    --rojo : #FF2E63;
+    --rojo : #ff2e627e;
     --gris : #EAEAEA;
 
 }
@@ -17,4 +17,133 @@
 }
 .bg-gris{
     background-color: var(--gris);
+}
+/*Boton de añadir*/
+.tarjeta{
+    background-color: gris;
+    padding: 30px;
+    width: 300px;
+    height: auto;
+    border-radius: 28px 28px 28px 28px;
+    -moz-border-radius: 28px 28px 28px 28px;
+    -webkit-border-radius: 28px 28px 28px 28px;
+    -webkit-box-shadow: 7px 7px 26px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 7px 26px -10px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 26px -10px rgba(0,0,0,0.75);
+    border: 0px solid white;
+
+
+}
+.tarjeta i{
+    color: var(--negro);
+    font-size: 70px;
+    transition: all 1s ease-in-out;
+}
+.tarjeta i:hover{
+    transform: scale(1.3);
+}
+/*Miniform*/
+.imagen-ejercicio{
+    width: 100%;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+/* Login */
+.login-centro{
+    display: grid;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+@media (max-width: 480px) {
+    .wrapper{
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+        width: min(95%, 360px);
+    }   
+}
+
+#vista-login{
+    background-image: url('../img/wellness-center.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#login__logo-img{
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+/*Entrenamiento*/
+.ver-entrenamiento{
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+}
+.ver-entrenamiento i{
+    font-size: 18px;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0,0,0,.5);
+
+}
+.cuerpo{
+    width: -webkit-fill-available;
+    max-width: 1200px;
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.cuerpo h3{
+    text-align: center;
+    margin: 10px;
+}
+.cuerpo .tarjeta{
+    gap: 10px;
+}
+.cuerpo .centrar{
+    justify-content: center;
+}
+.cerrar{
+    margin: 10px auto;
+
+}
+
+/* Accordion */
+#card-header--h2_Resultado_Buscador_alumno {
+    display: flex;
+    justify-content: space-between;
+}
+
+#card-header--h2--button_Resultado_Buscador_alumno {
+    width: 75%;
+}
+
+#card-header--h2--div_Resultado_Buscador_alumno {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
 }

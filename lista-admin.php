@@ -13,7 +13,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="admins" class="table table-bordered table-striped">
+                        <table id="tabla" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Usuario</th>
