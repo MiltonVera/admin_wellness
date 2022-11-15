@@ -183,6 +183,7 @@ function ListarRutinas(e, alumno, rutinas) {
   contenedor.classList.add("row");
   contenedor.classList.add("centrar");
   contenedor.setAttribute("method","POST")
+  contenedor.setAttribute("action","models/modelo-alumno.php")
   document.querySelector(".cuerpo").appendChild(contenedor)
 
   rutinas_filtradas.forEach((rutina, index) => {
@@ -205,8 +206,7 @@ function ListarRutinas(e, alumno, rutinas) {
             </div>
             <div class="form-group col-md-12">
              <label for="dia">Dia</label>
-              <select class="programacion ${inWords(rut.id_rutina)}" name="programacion[dias[]]" multiple>
-                <option value="">-- Seleccionar ---</option>
+              <select class="programacion ${inWords(rut.id_rutina)}  col-md-12" name="programacion[${rut.id_rutina}][]" multiple>
                 <option value="1">Lunes</option>
                 <option value="2">Martes</option>
                 <option value="3">Miercoles</option>
@@ -240,6 +240,21 @@ function ListarRutinas(e, alumno, rutinas) {
   submit.classList.add("btn")
   submit.classList.add("bg-blue")
 
+  let alumno_id = document.createElement("input")
+  alumno_id.setAttribute("type","hidden")
+  alumno_id.setAttribute("value",alumno)
+  alumno_id.setAttribute("name","alumno")
+
+  let entrenamiento_id = document.createElement("input")
+  entrenamiento_id.setAttribute("type","hidden")
+  entrenamiento_id.setAttribute("value",id_entrenamiento)
+  entrenamiento_id.setAttribute("name","entrenamiento")
+
+
+
   $("form").append(submit);
+  $("form").append(alumno_id);
+  $("form").append(entrenamiento_id);
+  
   
 }
