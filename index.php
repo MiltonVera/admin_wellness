@@ -97,7 +97,7 @@
               </h2>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body graficasAccordion">
                 <div class="espacioGrafica__asistencia">
                   <h3 class="graficas__texto">Gráfica Asistencia</h3>
@@ -111,11 +111,20 @@
 
                 <div class="espacioGrafica__RM">
                   <h3 class="graficas__texto">Gráfica RM's Básico</h3>
+                  <div class="form-floating">
+                    <select class="form-select espacioGrafica__RM__select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected>Escoge un RM</option>
+                      <option value="1">Sentadilla</option>
+                      <option value="2">Press de Banca</option>
+                      <option value="3">Peso Muerto</option>
+                      <option value="4">Press Militar</option>
+                    </select>
+                  </div>
                   <canvas id="monChart" class="grafica__PR" width="400" height="200"></canvas>
                 </div>
 
                 <div class="espacioGrafica__emocional">
-                  <h3 class="graficas__texto">Gráfica Emocional</h3>
+                  <h3 class="graficas__texto">Gráfica de Percepcion del Esfuerzo</h3>
                   <canvas id="mChart" class="grafica__emocional" width="400" height="200"></canvas>
                 </div>
               </div>

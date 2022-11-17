@@ -250,11 +250,18 @@ function ListarRutinas(e, alumno, rutinas) {
   entrenamiento_id.setAttribute("value",id_entrenamiento)
   entrenamiento_id.setAttribute("name","entrenamiento")
 
+  let accion = document.createElement("input")
+  accion.setAttribute("type","hidden")
+  accion.setAttribute("value","asignar")
+  accion.setAttribute("name","accion")
+
 
 
   $("form").append(submit);
   $("form").append(alumno_id);
   $("form").append(entrenamiento_id);
+  $("form").append(accion);
+
   
   
 }

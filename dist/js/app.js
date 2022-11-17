@@ -2,6 +2,9 @@ $(function () {
 
     $(".modal_rutina").on("click", e => modal_app(e, true))
 
+    
+
+
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
@@ -88,9 +91,9 @@ $(function () {
 
     const ctz = document.getElementById('monChart').getContext('2d');
     const monChart = new Chart(ctz, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: ['Sentadilla', 'Press de Banca', 'Peso Muerto', 'Press Militar'],
+            labels: ['Sentadilla'],
             datasets: [{
                 label: '# of Votes',
                 data: [12, 19, 3, 5],
