@@ -97,7 +97,7 @@
               </h2>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body graficasAccordion">
                 <div class="espacioGrafica__asistencia">
                   <h3 class="graficas__texto">Gráfica Asistencia</h3>
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="espacioGrafica__emocional">
-                  <h3 class="graficas__texto">Gráfica Emocional</h3>
+                  <h3 class="graficas__texto">Gráfica de Percepcion del Esfuerzo</h3>
                   <canvas id="mChart" class="grafica__emocional" width="400" height="200"></canvas>
                 </div>
               </div>
