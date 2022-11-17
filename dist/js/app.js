@@ -2,16 +2,14 @@ $(function () {
 
     $(".modal_rutina").on("click", e => modal_app(e, true))
 
-    
-
-
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
+    const ctx = document.getElementById('GraficaAsistencia').getContext('2d');
+    const GraficaAsistencia = new Chart(ctx, {
+        
         type: 'line',
         data: {
             labels: ['07/11/22', '08/11/22', '09/11/22', '10/11/22', '11/11/22', '12/11/22', '13/11/22'],
             datasets: [{
-                label: '# of Votes',
+                label: '# de Asistencias',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -43,15 +41,18 @@ $(function () {
         }
     });
 
+    datosPesoAlumno = {
+        'labels': [],
+        'values': []
+    }
 
-
-    const cty = document.getElementById('miChart').getContext('2d');
-    const miChart = new Chart(cty, {
+    const cty = document.getElementById('GraficaPesoAlumno').getContext('2d');
+    const GraficaPesoAlumno = new Chart(cty, {
         type: 'line',
         data: {
             labels: ['17/10/22 - 23/10/22', '24/10/22 - 30/10/22', '31/10/22 - 06/11/22', '07/11/22 - 13/11/22'],
             datasets: [{
-                label: '# of Votes',
+                label: 'Kg del Alumno',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -89,13 +90,18 @@ $(function () {
         }
     });
 
-    const ctz = document.getElementById('monChart').getContext('2d');
-    const monChart = new Chart(ctz, {
+    datosRMBasico = {
+        'labels': [],
+        'values': []
+    }
+
+    const ctz = document.getElementById('GraficaRMBasico').getContext('2d');
+    const GraficaRMBasico = new Chart(ctz, {
         type: 'line',
         data: {
             labels: ['Sentadilla'],
             datasets: [{
-                label: '# of Votes',
+                label: 'Kg',
                 data: [12, 19, 3, 5],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -127,13 +133,18 @@ $(function () {
         }
     });
 
-    const cta = document.getElementById('mChart').getContext('2d');
-    const mChart = new Chart(cta, {
+    datosPercepcionEsfuerzo = {
+        'labels': [],
+        'values': []
+    }
+
+    const cta = document.getElementById('GraficaPercepcionEsfuerzo').getContext('2d');
+    const GraficaPercepcionEsfuerzo = new Chart(cta, {
         type: 'line',
         data: {
             labels: ['07/11/22', '08/11/22', '09/11/22', '10/11/22', '11/11/22', '12/11/22', '13/11/22'],
             datasets: [{
-                label: '# of Votes',
+                label: '# de puntos',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -165,13 +176,18 @@ $(function () {
         }
     });
 
-    const ctc = document.getElementById('maChart').getContext('2d');
-    const maChart = new Chart(ctc, {
+    datosAsistenciaMensualGeneral = {
+        'labels': [],
+        'values': []
+    }
+
+    const ctc = document.getElementById('GraficaMensualGeneral').getContext('2d');
+    const GraficaMensualGeneral = new Chart(ctc, {
         type: 'line',
         data: {
             labels: ['Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'],
             datasets: [{
-                label: '# of Votes',
+                label: '# de Asistencias',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -203,13 +219,18 @@ $(function () {
         }
     });
 
-    const cts = document.getElementById('meChart').getContext('2d');
-    const meChart = new Chart(cts, {
+    datosAsistenciaSemanalGeneral = {
+        'labels': [],
+        'values': []
+    }
+
+    const cts = document.getElementById('GraficaSemanalGeneral').getContext('2d');
+    const GraficaSemanalGeneral = new Chart(cts, {
         type: 'line',
         data: {
             labels: ['07/11/22', '08/11/22', '09/11/22', '10/11/22', '11/11/22', '12/11/22', '13/11/22'],
             datasets: [{
-                label: '# of Votes',
+                label: '# de Asistencias',
                 data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -246,6 +267,7 @@ $(function () {
 function modal_app(e) {
     console.log("Corriendo app")
     let id = $(e.currentTarget).attr('data-id');
+    console.log(e.currentTarget);
     let padre = $(".table");
     let modal = document.createElement("div");
     //Creamos la ventana modal
@@ -330,6 +352,3 @@ function modal_app(e) {
 
     
 }
-    
-
-

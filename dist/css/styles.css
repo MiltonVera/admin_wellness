@@ -201,12 +201,12 @@
     justify-content: space-evenly;
 }
 
-#asingarRutina__boton__texto {
+.asignarRutina__boton__texto {
     display: none;
 }
 
 @media (min-width: 1087px) {
-    #asingarRutina__boton__texto {
+    .asignarRutina__boton__texto {
         display: inline;
     }
 }
@@ -226,7 +226,7 @@
 
     .grafica__asistencia, .grafica__pesoAlumno {
         max-width: 100%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .espacioGrafica__RM, .espacioGrafica__emocional {
