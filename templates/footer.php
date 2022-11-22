@@ -13,7 +13,7 @@
 
 
 <?php 
-if(substr($pagina,0,5) == "lista" || $pagina == "modal.php" ){?>
+if(substr($pagina,0,5) == "lista" || $pagina == "buscador.php" ){?>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -59,7 +59,7 @@ if(substr($pagina,0,5) == "lista" || $pagina == "modal.php" ){?>
 
 
 <?php 
-if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar" || $pagina == "modal.php"){?>
+if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar" ||  substr($pagina,0,8) == "buscador"){?>
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -94,10 +94,11 @@ if($pagina == "crear-entrenamiento.php"  || $pagina == "editar-entrenamiento.php
 <script src="dist/js/entrenamiento.js"></script>
 <?php } ?>
 
-<?php 
-if($pagina == "modal.php"){?>
+
+
 <script src="dist/js/modal.js"></script>
-<?php } ?>
+<script src="dist/js/buscador.js"></script>
+<script src="dist/js/asistencia.js"></script>
 
 <script src="dist/js/ajax.js"></script>
 <script src="dist/js/app.js"></script>

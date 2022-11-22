@@ -47,6 +47,7 @@
         $conn->autocommit(true);
         $stmt->close();
         $conn->close();
+        die(json_encode(Array("respuesta"=>"Exito")));
     }
     if($_POST["accion"] == "buscar"){
         $busqueda = "%".$_POST["nombre"]."%";
@@ -55,6 +56,23 @@
         $stmt->bind_param("s",$busqueda);
         $stmt->execute();
         $resultado = $stmt->get_result()->fetch_assoc();
+        if(empty($resultado)){
+            $resultado = Array("respuesta" =>"error");
+        }
+
+        die(json_encode($resultado));
+
+    }
+    if($_POST["accion"] == "buscar_matricula"){
+        $busqueda = $_POST["matricula"];
+
+        $stmt = $conn->prepare("SELECT id_alumno,nombre FROM alumno WHERE matricula = ?");
+        $stmt->bind_param("s",$busqueda);
+        $stmt->execute();
+        $resultado = $stmt->get_result()->fetch_assoc();
+        if(empty($resultado)){
+            $resultado = Array("respuesta" =>"error");
+        }
 
         die(json_encode($resultado));
 
@@ -157,6 +175,17 @@
         $peso->close();
         $conn->close();
         die(json_encode($salida));
+    }
+    if($_POST["accion"] == "asistencia"){
+        $id = (int)$_POST["id"];
+        date_default_timezone_set('America/Monterrey');
+        $fecha = date('y-m-d', time());
+        $hora = date('h:i:s', time());
+
+        $stmt = $conn->prepare("INSERT INTO asistencia (id_alumno,fecha,hora) VALUES (?,?,?)");
+        $stmt->bind_param("iss",$id,$fecha,$hora);
+        $stmt->execute();
+        die(json_encode(Array("respuesta" => "exito")));
     }
 
     
