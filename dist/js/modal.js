@@ -15,11 +15,23 @@ function inWords (num) {
 
 $(function () {
   let accionar = document.querySelectorAll(".accionar_modal");
+  
   accionar.forEach((boton) =>
     boton.addEventListener("click", (e) => {
       e.preventDefault();
       //Le mandamos el id del alumno al que se le asignara la rutina
-      modal_index(e.target.id);
+
+      if(!e.currentTarget.id){
+        Swal.fire({
+          icon: 'error',
+          title: 'No hay usuario',
+          text: 'Debes buscar un alumno antes de asignar un entrenamiento',
+          footer: ''
+      });
+      return
+      }
+
+      modal_index(e.currentTarget.id);
     })
   );
 });
@@ -182,9 +194,12 @@ function ListarRutinas(e, alumno, rutinas) {
   let contenedor = document.createElement("form");
   contenedor.classList.add("row");
   contenedor.classList.add("centrar");
+  contenedor.classList.add("contenedor");
   contenedor.setAttribute("method","POST")
   contenedor.setAttribute("action","models/modelo-alumno.php")
   document.querySelector(".cuerpo").appendChild(contenedor)
+
+  contenedor.addEventListener("submit",(e) => submitHandler(e));
 
   rutinas_filtradas.forEach((rutina, index) => {
     rutina.forEach((rut) => {
@@ -223,9 +238,9 @@ function ListarRutinas(e, alumno, rutinas) {
         `;
         contenedor.appendChild(rutinas_dom[index])
 
-        console.log($(`.${inWords(rut.id_rutina)}`).select2({
+        $(`.${inWords(rut.id_rutina)}`).select2({
           dropdownParent: $('.cuerpo')
-        }))
+        })
 
     });
   });
@@ -257,11 +272,33 @@ function ListarRutinas(e, alumno, rutinas) {
 
 
 
-  $("form").append(submit);
-  $("form").append(alumno_id);
-  $("form").append(entrenamiento_id);
-  $("form").append(accion);
+  $(".contenedor").append(submit);
+  $(".contenedor").append(alumno_id);
+  $(".contenedor").append(entrenamiento_id);
+  $(".contenedor").append(accion);
 
   
   
+}
+
+function submitHandler(e){
+  e.preventDefault();
+  let datos = $(".contenedor").serializeArray()
+  $.ajax({
+    type: "post",
+    data: datos,
+    url: "/models/modelo-alumno.php",
+    dataType: 'json',
+    success: function(data) {
+        Swal.fire(
+            'Rutina Asignada',
+            'Se te redigira automaticamente',
+            'success'
+        )
+        
+        setTimeout(() => {
+            window.location.replace("/");
+        }, 2000);
+    }
+})
 }
