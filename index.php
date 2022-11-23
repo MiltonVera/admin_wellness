@@ -73,30 +73,32 @@
         </div>
         <!-- /.row -->
 
-        <form class="barraBuscadora">
+        <form class="barraBuscadora" id="buscador" method="post">
           <fieldset class="barraBuscadora__fieldset">
             <legend class="barraBuscadora__legend">Búsqueda</legend>
 
-            <input class="barraBuscadora__input" type="text">
+            <input class="barraBuscadora__input" name="busqueda" type="text">
             <button class="barraBuscadora__boton" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </fieldset>
         </form>
+
+        <div class="modal_index"></div>
 
         <div class="accordion" id="accordionExample"> <!--onclcik primeravez = false etiqueta también cambiar-->
           <div class="card">
             <div class="card-header" id="headingOne">
               <h2 id="card-header--h2_Resultado_Buscador_alumno" class="mb-0">
-                <button id="card-header--h2--button_Resultado_Buscador_alumno" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Javier Hernández Balcázar
+                <button id="card-header--h2--button_Resultado_Buscador_alumno" class="btn btn-link btn-block text-left alumno" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  
                 </button>
                 <div id="card-header--h2--div_Resultado_Buscador_alumno">
-                    <button type="button" class="btn btn-primary"><i class="fa-duotone fas fa-dumbbell"></i> <span class="asignarRutina__boton__texto">Asignar Rutina</span></button>
-                    <button type="button" class="btn btn-warning"><i class="fa-solid fa-check-to-slot"></i></button>
+                    <button type="button" class="btn btn-primary accionar_modal"><i class="fa-duotone fas fa-dumbbell"></i> <span class="asignarRutina__boton__texto">Asignar Rutina</span></button>
+                    <button type="button" class="btn btn-warning asistencia"><i class="fa-solid fa-check-to-slot"></i></button>
                 </div>
               </h2>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body graficasAccordion">
                 <div class="espacioGrafica__asistencia">
                   <h3 class="graficas__texto">Gráfica Asistencia</h3>
@@ -123,8 +125,6 @@
                 </div>
 
                 <div class="espacioGrafica__emocional">
-                  <h3 class="graficas__texto">Gráfica Emocional</h3>
-                  <canvas id="mChart" class="grafica__emocional" width="400" height="200"></canvas>
                   <h3 class="graficas__texto">Gráfica de Percepcion del Esfuerzo</h3>
                   <canvas id="GraficaPercepcionEsfuerzo" class="grafica__emocional" width="400" height="200"></canvas>
                 </div>
