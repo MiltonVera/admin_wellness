@@ -121,6 +121,12 @@ $rutina = $resultado->fetch_assoc();
                                 <input type="number" class="form-control" name="descanso[]" min=0 max=10 step=".5" placeholder="Minutos de Descanso"  value="<?php echo $ejercicio["descanso"] ?>">
                             </div>
                         </div>
+                        <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="carga">% Trabajo</label>
+                            <input type="number" class="form-control" name="carga[]" min=0 max=100 step="1" placeholder="Porcentaje de carga"  value="<?php echo $ejercicio["carga"] ?>">
+                        </div>
+                    </div>
 
                         <button class="btn btn-danger col-12" id="eliminar">Eliminar</button>
                     </div>

@@ -132,10 +132,63 @@
 
 }
 
-/* Accordion */
-#card-header--h2_Resultado_Buscador_alumno {
+.Dashboard__link {
+    text-decoration: none;
+    color: black;
+}
+
+/* Barra Buscadora */
+.barraBuscadora {
+    width: 90%;
+    margin: 0 auto 20px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.barraBuscadora__fieldset {
+    width: 100%;
+}
+
+.barraBuscadora__legend {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.barraBuscadora__input {
+    width: 90%;
+    height: 50px;
+    border: none;
+}
+
+.barraBuscadora__boton {
+    background-color: royalblue;
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.barraBuscadora__boton:hover {
+    background-color: #3e4144;
+}
+
+.barraBuscadora__boton:focus{ 
+    outline: none;
+}
+
+/* Accordion */
+@media (min-width: 768px) {
+    #card-header--h2_Resultado_Buscador_alumno {
+        display: flex;
+        gap: 10px;
+    }
 }
 
 #card-header--h2--button_Resultado_Buscador_alumno {
@@ -145,5 +198,58 @@
 #card-header--h2--div_Resultado_Buscador_alumno {
     display: flex;
     width: 25%;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.asignarRutina__boton__texto {
+    display: none;
+}
+
+@media (min-width: 1087px) {
+    .asignarRutina__boton__texto {
+        display: inline;
+    }
+}
+
+.espacioGrafica__RM__select {
+    margin: 0 45%;
+}
+
+@media (min-width: 992px) {
+    .graficasAccordion {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto;
+        row-gap: 50px;
+    }
+
+    .grafica__asistencia, .grafica__pesoAlumno {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .espacioGrafica__RM, .espacioGrafica__emocional {
+        grid-column: 1 / 3;
+    }
+}
+
+@media (min-width: 1645px) {
+    .grafica__asistencia, .grafica__pesoAlumno {
+        max-width: 1057px;
+        margin: 0;
+    }
+}
+
+.graficas__texto, .grafica__fueraAccordion__texto {
+    text-align: center;
+    font-weight: bold;
+}
+
+.grafica__fueraAccordion__texto {
+    margin-top: 100px;
+}
+
+.grafica__fueraAccordion__lineaDivisioria {
+    margin-top: 100px;
 }

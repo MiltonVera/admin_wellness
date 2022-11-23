@@ -68,6 +68,7 @@ if($_POST["registro"] == "crear"){
     $serie = $_POST["serie"];
     $repeticion = $_POST["repeticion"];
     $descanso = $_POST["descanso"];
+    $carga = $_POST["carga"];
     
     $ejercicios_entrada = array();
 
@@ -82,7 +83,8 @@ if($_POST["registro"] == "crear"){
             "url_gif" => $url_gif[$i],
             "serie" => $serie[$i],
             "repeticion" => $repeticion[$i],
-            "descanso" => $descanso[$i]
+            "descanso" => $descanso[$i],
+            "carga" => $carga[$i]
         
         );
     }
@@ -129,6 +131,7 @@ if($_POST["registro"] == "editar"){
     $serie = $_POST["serie"];
     $repeticion = $_POST["repeticion"];
     $descanso = $_POST["descanso"];
+    $carga = $_POST["carga"];
     
     $ejercicios_entrada = array();
 
@@ -143,7 +146,8 @@ if($_POST["registro"] == "editar"){
             "url_gif" => $url_gif[$i],
             "serie" => $serie[$i],
             "repeticion" => $repeticion[$i],
-            "descanso" => $descanso[$i]
+            "descanso" => $descanso[$i],
+            "carga" => $carga[$i]
         
         );
     }
