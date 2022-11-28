@@ -211,6 +211,33 @@
     }
 }
 
+.accordion__datosElementales {
+    margin-top: 10px;
+}
+
+@media (min-width: 992px) {
+    .accordion__datosElementales {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+    }
+}
+
+.accordion__datosElementales p {
+    text-align: center;
+}
+
+.accordion__datosElementales__subtitulo {
+    font-weight: bold;
+}
+
+.accordion__datosElementales__objetivos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
+}
+
 .espacioGrafica__RM__select {
     margin: 0 45%;
 }
