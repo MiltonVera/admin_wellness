@@ -52,7 +52,7 @@
     if($_POST["accion"] == "buscar"){
         $busqueda = "%".$_POST["nombre"]."%";
 
-        $stmt = $conn->prepare("SELECT id_alumno,nombre FROM alumno WHERE nombre LIKE ?");
+        $stmt = $conn->prepare("SELECT * FROM alumno WHERE nombre LIKE ?");
         $stmt->bind_param("s",$busqueda);
         $stmt->execute();
         $resultado = $stmt->get_result()->fetch_assoc();
@@ -66,7 +66,7 @@
     if($_POST["accion"] == "buscar_matricula"){
         $busqueda = $_POST["matricula"];
 
-        $stmt = $conn->prepare("SELECT id_alumno,nombre FROM alumno WHERE matricula = ?");
+        $stmt = $conn->prepare("SELECT * FROM alumno WHERE matricula = ?");
         $stmt->bind_param("s",$busqueda);
         $stmt->execute();
         $resultado = $stmt->get_result()->fetch_assoc();
