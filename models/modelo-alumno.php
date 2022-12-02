@@ -109,7 +109,7 @@ if ($_POST["accion"] == "datos") {
     $conn->autocommit(false);
 
     //---------------------------------------------------------------------------
-    $asistencia = $conn->prepare("SELECT * FROM asistencia WHERE id_alumno=?");
+    $asistencia = $conn->prepare("SELECT * FROM (SELECT * FROM asistencia WHERE id_alumno = ? ORDER BY id_alumno DESC LIMIT 10) AS sub ORDER BY id_alumno ASC;");
     $asistencia->bind_param("i", $alumno);
     $asistencia->execute();
 

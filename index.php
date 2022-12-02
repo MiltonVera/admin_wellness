@@ -1,5 +1,12 @@
 <?php include_once "templates/header.php"; ?>
  <?php include_once "templates/sidebar.php" ?>
+ <?php include_once "functions/connection.php" ?>
+
+ <?php
+  $sql = "SELECT (SELECT COUNT(*) FROM ejercicio ) as ejercicios, (SELECT COUNT(*) FROM rutina ) as rutinas,(SELECT COUNT(*) FROM entrenamiento ) as entrenamientos,(SELECT COUNT(*) FROM alumno ) as alumnos";
+  $datos = $conn->query($sql);
+  $datos = $datos->fetch_assoc();
+?>
 
     <section class="content">
       <div class="container-fluid">
@@ -13,8 +20,7 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Ejercicios</span>
                   <span class="info-box-number">
-                    10
-                    <small>%</small>
+                    <?php echo $datos["ejercicios"] ?>
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -30,7 +36,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Rutinas</span>
-                  <span class="info-box-number">41,410</span>
+                  <?php echo $datos["rutinas"] ?>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -49,7 +55,7 @@
               
                 <div class="info-box-content">
                   <span class="info-box-text">Entrenamientos</span>
-                  <span class="info-box-number">760</span>
+                  <?php echo $datos["entrenamientos"] ?>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -63,7 +69,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Estudiantes</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number"><?php echo $datos["alumnos"] ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -101,27 +107,25 @@
             <section class="accordion__datosElementales">
               <div>
                 <p class="accordion__datosElementales__subtitulo">Matrícula</p>
-                <p id="matricula">A000</p>
+                <p id="matricula"></p>
               </div>
               <div>
                 <p class="accordion__datosElementales__subtitulo">Nivel</p>
-                <p id="nivel">Básico</p>
+                <p id="nivel"></p>
               </div>
               <div>
                 <p class="accordion__datosElementales__subtitulo">Objetivos</p>
                 <ol class="accordion__datosElementales__objetivos" id="objetivos">
-                  <li>Objetivo #1</li>
-                  <li>Objetivo #2</li>
-                  <li>Objetivo #3</li>
+                  
                 </ol>
               </div>
               <div>
-                <p class="accordion__datosElementales__subtitulo" id="lesion">Lesión</p>
-                <p>Sí</p>
+                <p class="accordion__datosElementales__subtitulo" >Lesión</p>
+                <p id="lesion"></p>
               </div>
               <div>
-                <p class="accordion__datosElementales__subtitulo" id="descanso">Tiempo sin entrenar</p>
-                <p>5 meses</p>
+                <p class="accordion__datosElementales__subtitulo" >Tiempo sin entrenar</p>
+                <p id="descanso"></p>
               </div>
             </section>
 
@@ -137,10 +141,22 @@
                   <canvas id="GraficaPesoAlumno" class="grafica__pesoAlumno" width="800" height="400"></canvas>
                 </div>
 
-                <div class="espacioGrafica__emocional">
-                  <h3 class="graficas__texto">Gráfica de Percepcion del Esfuerzo</h3>
-                  <canvas id="GraficaPercepcionEsfuerzo" class="grafica__emocional" width="400" height="200"></canvas>
+                <div class="espacioGrafica">
+                  <h3 class="graficas__texto">Carga Semanal</h3>
+                  <canvas id="GraficaCargaSemanal" width="400" height="200"></canvas>
                 </div>
+                <div class="espacioGrafica">
+                  <h3 class="graficas__texto">Monotonía</h3>
+                  <canvas id="GraficaMonotonia" width="400" height="200"></canvas>
+                </div>
+                <div class="espacioGrafica">
+                  <h3 class="graficas__texto">Fatiga</h3>
+                  <canvas id="GraficaFatiga" width="400" height="200"></canvas>
+                </div>
+
+                
+
+
               </div>
             </div>
           </div>

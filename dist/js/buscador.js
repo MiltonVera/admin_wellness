@@ -1,7 +1,13 @@
 $(function () {
+  let ctx = [];
   /* Inicializamos las graficas */
-  const ctx = document.getElementById("GraficaAsistencia").getContext("2d");
-  const GraficaAsistencia = new Chart(ctx, {
+  ctx.push(document.getElementById("GraficaAsistencia").getContext("2d"));
+  ctx.push(document.getElementById("GraficaPesoAlumno").getContext("2d"));
+  ctx.push(document.getElementById("GraficaCargaSemanal").getContext("2d"));
+  ctx.push(document.getElementById("GraficaMonotonia").getContext("2d"));
+  ctx.push(document.getElementById("GraficaFatiga").getContext("2d"));
+  //const ctxx = ;
+  const GraficaAsistencia = new Chart(ctx[0], {
     type: "bar",
     data: {
       labels: [],
@@ -9,22 +15,8 @@ $(function () {
         {
           label: "# de Asistencias",
           data: [],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
+          backgroundColor: ["#007bff"],
+          borderColor: ["#007bff"],
           borderWidth: 1,
         },
       ],
@@ -32,7 +24,7 @@ $(function () {
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
         },
       },
       responsive: true,
@@ -40,8 +32,7 @@ $(function () {
     },
   });
 
-  const cty = document.getElementById("GraficaPesoAlumno").getContext("2d");
-  const GraficaPesoAlumno = new Chart(cty, {
+  const GraficaPesoAlumno = new Chart(ctx[1], {
     type: "line",
     data: {
       labels: [],
@@ -49,22 +40,8 @@ $(function () {
         {
           label: "Kg del Alumno",
           data: [],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
+          backgroundColor: ["#007bff"],
+          borderColor: ["#007bff"],
           borderWidth: 1,
         },
       ],
@@ -86,10 +63,7 @@ $(function () {
     },
   });
 
-  const cta = document
-    .getElementById("GraficaPercepcionEsfuerzo")
-    .getContext("2d");
-  const GraficaPercepcionEsfuerzo = new Chart(cta, {
+  const GraficaCargaSemanal = new Chart(ctx[2], {
     type: "line",
     data: {
       labels: [],
@@ -97,22 +71,8 @@ $(function () {
         {
           label: "# de puntos",
           data: [],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
+          backgroundColor: ["#007bff"],
+          borderColor: ["#007bff"],
           borderWidth: 1,
         },
       ],
@@ -122,14 +82,89 @@ $(function () {
         y: {
           beginAtZero: true,
         },
+        x: {
+          title: {
+            display: true,
+            align: "center",
+            text: "Semana",
+          },
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: true,
+    },
+  });
+  const GraficaMonotonia = new Chart(ctx[3], {
+    type: "line",
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: "# de puntos",
+          data: [],
+          backgroundColor: ["#007bff"],
+          borderColor: ["#007bff"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            align: "center",
+            text: "Semana",
+          },
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: true,
+    },
+  });
+  const GraficaFatiga = new Chart(ctx[4], {
+    type: "line",
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: "# de puntos",
+          data: [],
+          backgroundColor: ["#007bff"],
+          borderColor: ["#007bff"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+        x: {
+          title: {
+            display: true,
+            align: "center",
+            text: "Semana",
+          },
+        },
       },
       responsive: true,
       maintainAspectRatio: true,
     },
   });
   /* Fin de inicializacion de las graficas y comienzo de la implementacion de buscador */
+
   let buscador = document.querySelector("#buscador");
   buscador.addEventListener("submit", function (e) {
+    document.querySelector(".preloader").style.height = null;
+    document.querySelector(".animation__wobble").style.display = null;
+
+    document.querySelector(".collapse").classList.remove("show");
+
     e.preventDefault();
     let busqueda = $(this).serializeArray()[0].value;
 
@@ -144,28 +179,15 @@ $(function () {
         url: "models/modelo-alumno.php",
         dataType: "json",
         success: function (data) {
-          //Si existe una respuesta es porque hubo un error
-
-          if (data.respuesta) {
-            Swal.fire({
-              icon: "error",
-              title: "No se encontro el alumno",
-              text: "Revisa la matricula o intenta la busqueda por nombre",
-              footer: "",
-            });
-            return;
-          }
-
-          $(".alumno").text(data.nombre);
-          $(".accionar_modal").attr("id", data.id_alumno);
-          $(".asistencia").attr("id", data.id_alumno);
-          actualizarGraficas(
+          respuestaHandler(
+            data,
+            "nombre",
             GraficaAsistencia,
             GraficaPesoAlumno,
-            GraficaPercepcionEsfuerzo,
-            data.id_alumno
+            GraficaCargaSemanal,
+            GraficaMonotonia,
+            GraficaFatiga
           );
-
         },
       });
       return;
@@ -179,35 +201,52 @@ $(function () {
       url: "models/modelo-alumno.php",
       dataType: "json",
       success: function (data) {
-        if (data.respuesta) {
-          Swal.fire({
-            icon: "error",
-            title: "No se encontro el alumno",
-            text: "Revisa el nombre o intenta la busqueda por matricula",
-            footer: "",
-          });
-          return;
-        }
-        $(".alumno").text(data.nombre);
-        $(".accionar_modal").attr("id", data.id_alumno);
-        $(".asistencia").attr("id", data.id_alumno);
-        actualizarGraficas(
+        respuestaHandler(
+          data,
+          "matricula",
           GraficaAsistencia,
           GraficaPesoAlumno,
-          GraficaPercepcionEsfuerzo,
-          GraficaRMBasico,
-          data.id_alumno
+          GraficaCargaSemanal,
+          GraficaMonotonia,
+          GraficaFatiga
         );
-
-
-
       },
     });
-
   });
 });
+function respuestaHandler(
+  data,
+  busqueda,
+  GraficaAsistencia,
+  GraficaPesoAlumno,
+  GraficaCargaSemanal,
+  GraficaMonotonia,
+  GraficaFatiga
+) {
+  document.querySelector(".preloader").style.height = "0";
+  document.querySelector(".animation__wobble").style.display = "none";
 
-function actualizarGraficas(asistencia, peso, esfuerzo, id) {
+  if (data.respuesta) {
+    Swal.fire({
+      icon: "error",
+      title: `No se encontro el alumno`,
+      text: `Revisa el nombre o intenta la busqueda por ${busqueda}`,
+      footer: "",
+    });
+    return;
+  }
+  actualizarAlumno(data);
+  actualizarGraficas(
+    GraficaAsistencia,
+    GraficaPesoAlumno,
+    GraficaCargaSemanal,
+    GraficaMonotonia,
+    GraficaFatiga,
+    data.id_alumno
+  );
+}
+
+function actualizarGraficas(asistencia, peso, carga, monotonia, fatiga, id) {
   //Ahora hay que hacer la consulta a la base de datos para obtener los datos necesatios para graficar
   $.ajax({
     type: "post",
@@ -215,7 +254,7 @@ function actualizarGraficas(asistencia, peso, esfuerzo, id) {
       accion: "datos",
       alumno: id,
     },
-    async:false,
+    async: false,
     url: "models/modelo-alumno.php",
     dataType: "json",
     success: function (data) {
@@ -227,10 +266,18 @@ function actualizarGraficas(asistencia, peso, esfuerzo, id) {
         data.asistencia.values
       );
       actualizarGrafica(peso, data.peso.labels, data.peso.values);
-      actualizarGrafica(esfuerzo, data.esfuerzo.labels, data.esfuerzo.values);
 
-      
-      
+      actualizarGrafica(
+        carga,
+        data.carga_semanal.labels,
+        data.carga_semanal.values
+      );
+      actualizarGrafica(
+        monotonia,
+        data.monotonia.labels,
+        data.monotonia.values
+      );
+      actualizarGrafica(fatiga, data.fatiga.labels, data.fatiga.values);
     },
   });
 }
@@ -238,4 +285,34 @@ function actualizarGrafica(grafico, labels, values) {
   grafico.data.labels = labels;
   grafico.data.datasets[0].data = values;
 }
-function actualizarRM()
+
+function actualizarAlumno(data) {
+  let objetivosParser = {
+    1: "Bajar de Peso",
+    2: "Hipertrofia",
+    3: "Mantenerse Sano",
+    4: "Ganar Fuerza",
+    5: "Estetica",
+  };
+
+  let nivelParser = ["Nada de Experiencia","Menos de un año","De 1 a 2 años","Mas de dos años"]
+  let descansoParser = ["Nunca ha entranado","Maximo Dos Semanas","De 3 a 6 semanas","Mas de 6 semanas"]
+  let lesionParser = ["No","Si"]
+
+  $(".alumno").text(data.nombre);
+
+  matricula.textContent = data.matricula;
+  nivel.textContent = nivelParser[parseInt(data.experiencia)];;
+  objetivos.innerHTML = `
+    ${JSON.parse(data.objetivos).map((objetivo) => {
+      return `<li>${objetivosParser[parseInt(objetivo)]}</li>`;
+    }).join("")}
+  `;
+  lesion.textContent = lesionParser[parseInt(data.lesion)];
+  descanso.textContent = descansoParser[parseInt(data.descanso)];
+
+  
+
+  $(".accionar_modal").attr("id", data.id_alumno);
+  $(".asistencia").attr("id", data.id_alumno);
+}

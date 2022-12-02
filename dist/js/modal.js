@@ -292,12 +292,13 @@ function submitHandler(e){
     success: function(data) {
         Swal.fire(
             'Rutina Asignada',
-            'Se te redigira automaticamente',
+            'Esta ventana se cerrara automaticamente',
             'success'
         )
         
         setTimeout(() => {
-            window.location.replace("/");
+          $(e.target).parent().parent().remove()
+          modal.classList.remove("modal")
         }, 2000);
     }
 })

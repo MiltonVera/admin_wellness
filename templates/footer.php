@@ -97,6 +97,7 @@ if($pagina == "crear-entrenamiento.php"  || $pagina == "editar-entrenamiento.php
 
 <script src="dist/js/grafica.js"></script>
 <script src="dist/js/app.js"></script>
+<!--  -->
 <script src="dist/js/modal.js"></script>
 <script src="dist/js/buscador.js"></script>
 <script src="dist/js/asistencia.js"></script>

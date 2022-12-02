@@ -253,7 +253,7 @@
         margin: 0;
     }
 
-    .espacioGrafica__RM, .espacioGrafica__emocional {
+    .espacioGrafica {
         grid-column: 1 / 3;
     }
 }

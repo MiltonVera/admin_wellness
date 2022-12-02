@@ -141,7 +141,7 @@ if ($_POST["accion"] == "registro") {
             $token = generarToken($matricula,$contra);
             
             // Ya tenemos todos los datos ahora solo hay que hacer una inserción a la base de datos
-            $stmt2= $conn->prepare("INSERT INTO alumno (nombre,matricula,contra,edad,altura,experiencia,objetivos,lesion,sinEntrenar,token) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $stmt2= $conn->prepare("INSERT INTO alumno (nombre,matricula,contra,edad,altura,experiencia,objetivos,lesion,descanso,token) VALUES (?,?,?,?,?,?,?,?,?,?)");
             $stmt2->bind_param("sssiiisiis",$nombre,$matricula,$contra,$edad,$altura,$experiencia,$objetivos,$lesion,$descanso,$token);
             $stmt2->execute();
             $stmt2->close();
