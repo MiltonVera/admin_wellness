@@ -48,14 +48,10 @@
       </li>
     </ul>
     <!-- Contenedor de navegacion de la derecha -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Elemento de la navegacion -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
+    <div class="ml-auto botones-esquina-superior-derecha">
+      <button type="button" class="btn btn-success">Ajustes</button>
+      <button type="button" class="btn btn-success">Cerrar Sesión</button>
+    </div>
   </nav>
 
   <div class="content-wrapper">

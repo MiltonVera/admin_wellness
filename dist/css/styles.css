@@ -80,6 +80,11 @@
     width: 100%;
 }
 
+/* Header */
+.botones-esquina-superior-izquierda {
+    display: flex;
+    justify-content: space-between;
+}
 
 /*Entrenamiento*/
 .ver-entrenamiento{
