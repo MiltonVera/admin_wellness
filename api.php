@@ -255,7 +255,7 @@ if($_POST["accion"] == "rm"){
     $token = $_POST["token"];
     $peso = (int)$_POST["peso"];
     // Las opciones para ejercicio son PressBanca,PesoMuerto, Sentadilla, PressMilitar
-    $ejercicio = $_POST["ejercicio"];
+    $ejercicio =$_POST["ejercicio"];
      // Verificamos si el token es valido es decir: no es 0(logout) y existe un usuario con ese token
      if(!validarSesion($conn,$token)){
         //Si el token enviado no es valido se lo indicamos al usuario
@@ -267,17 +267,44 @@ if($_POST["accion"] == "rm"){
     date_default_timezone_set('America/Monterrey');
     $fecha = date('y-m-d', time());
 
-    $stmt = $conn->prepare("INSERT INTO basico (id_alumno,ejercicio,peso,fecha) VALUES (?,?,?,?)");
-    $stmt->bind_param("isds",$id,$ejercicio,$peso,$fecha);
+    //Ahora que insertamos el nuevo rm del usuario debemos actualizar el json de este usuario
+    $stmt = $conn->prepare("INSERT INTO rm (peso,id_alumno,id_ejercicio,fecha) VALUES (?,?,?,?)");
+    $stmt->bind_param("diis",$peso,$id,$ejercicio,$fecha);
     $stmt->execute();
-
     $stmt->close();
+
+    //Primero obtenemos el json del usuario
+    $stmt2 = $conn->prepare("SELECT entrenamiento FROM alumno WHERE id_alumno=?");
+    $stmt2->bind_param("i",$id);
+    $stmt2->execute();
+    $alumno = $stmt2->get_result()->fetch_assoc();
+    $stmt2->close();
+
+    $alumno = json_decode($alumno["entrenamiento"],true);
+    
+    foreach($alumno["rutinas"] as $key =>&$rutina){
+        foreach($rutina["ejercicios"] as &$ejer ){
+            if($ejer["id"] == $ejercicio){
+                $ejer["peso"]= $peso;
+            }
+        }
+    }
+
+    $alumno = json_encode($alumno);
+
+    //Ya que añadimos el peso al JSON del alumno ahora volvemos a insertar en json con el nuevo peso registrado}
+    $stmt3 = $conn->prepare("UPDATE alumno SET entrenamiento=?");
+    $stmt3->bind_param("s",$alumno);
+    $stmt3->execute();
+
+
     
     die(json_encode(Array("respuesta" => "exito")));
 }
 if($_POST["accion"] == "esfuerzo"){
     $token = $_POST["token"];
     $valor = (int)$_POST["valor"];
+    $duracion = (int)$_POST["duracion"];
     // Las opciones para ejercicio son PressBanca,PesoMuerto, Sentadilla, PressMilitar
     $id_rutina = (int)$_POST["id_rutina"];
      // Verificamos si el token es valido es decir: no es 0(logout) y existe un usuario con ese token
@@ -291,8 +318,8 @@ if($_POST["accion"] == "esfuerzo"){
     date_default_timezone_set('America/Monterrey');
     $fecha = date('y-m-d', time());
 
-    $stmt = $conn->prepare("INSERT INTO esfuerzo (id_alumno,valor,fecha,rutina) VALUES (?,?,?,?)");
-    $stmt->bind_param("iisi",$id,$valor,$fecha,$id_rutina);
+    $stmt = $conn->prepare("INSERT INTO esfuerzo (id_alumno,valor,fecha,rutina,duracion) VALUES (?,?,?,?,?)");
+    $stmt->bind_param("iisii",$id,$valor,$fecha,$id_rutina,$duracion);
     $stmt->execute();
 
     $stmt->close();

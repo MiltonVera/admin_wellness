@@ -1,22 +1,14 @@
 $(function () {
-  /* Inicializamos las graficas */ 
+  /* Inicializamos las graficas */
   const ctx = document.getElementById("GraficaAsistencia").getContext("2d");
   const GraficaAsistencia = new Chart(ctx, {
-    type: "line",
+    type: "bar",
     data: {
-      labels: [
-        "07/11/22",
-        "08/11/22",
-        "09/11/22",
-        "10/11/22",
-        "11/11/22",
-        "12/11/22",
-        "13/11/22",
-      ],
+      labels: [],
       datasets: [
         {
           label: "# de Asistencias",
-          data: [12, 19, 3, 5, 2, 3],
+          data: [],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -40,7 +32,7 @@ $(function () {
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          beginAtZero: true
         },
       },
       responsive: true,
@@ -52,16 +44,11 @@ $(function () {
   const GraficaPesoAlumno = new Chart(cty, {
     type: "line",
     data: {
-      labels: [
-        "17/10/22 - 23/10/22",
-        "24/10/22 - 30/10/22",
-        "31/10/22 - 06/11/22",
-        "07/11/22 - 13/11/22",
-      ],
+      labels: [],
       datasets: [
         {
           label: "Kg del Alumno",
-          data: [12, 19, 3, 5, 2, 3],
+          data: [],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -99,65 +86,17 @@ $(function () {
     },
   });
 
-  const ctz = document.getElementById("GraficaRMBasico").getContext("2d");
-  const GraficaRMBasico = new Chart(ctz, {
-    type: "line",
-    data: {
-      labels: ["Sentadilla"],
-      datasets: [
-        {
-          label: "Kg",
-          data: [12, 19, 3, 5],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-      responsive: true,
-      maintainAspectRatio: true,
-    },
-  });
-
   const cta = document
     .getElementById("GraficaPercepcionEsfuerzo")
     .getContext("2d");
   const GraficaPercepcionEsfuerzo = new Chart(cta, {
     type: "line",
     data: {
-      labels: [
-        "07/11/22",
-        "08/11/22",
-        "09/11/22",
-        "10/11/22",
-        "11/11/22",
-        "12/11/22",
-        "13/11/22",
-      ],
+      labels: [],
       datasets: [
         {
           label: "# de puntos",
-          data: [12, 19, 3, 5, 2, 3],
+          data: [],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -216,10 +155,17 @@ $(function () {
             });
             return;
           }
+
           $(".alumno").text(data.nombre);
           $(".accionar_modal").attr("id", data.id_alumno);
           $(".asistencia").attr("id", data.id_alumno);
-          actualizarGraficas(GraficaAsistencia,GraficaPesoAlumno,GraficaRMBasico,GraficaPercepcionEsfuerzo,data.id_alumno)
+          actualizarGraficas(
+            GraficaAsistencia,
+            GraficaPesoAlumno,
+            GraficaPercepcionEsfuerzo,
+            data.id_alumno
+          );
+
         },
       });
       return;
@@ -245,15 +191,51 @@ $(function () {
         $(".alumno").text(data.nombre);
         $(".accionar_modal").attr("id", data.id_alumno);
         $(".asistencia").attr("id", data.id_alumno);
+        actualizarGraficas(
+          GraficaAsistencia,
+          GraficaPesoAlumno,
+          GraficaPercepcionEsfuerzo,
+          GraficaRMBasico,
+          data.id_alumno
+        );
+
+
+
       },
     });
+
   });
 });
 
-function actualizarGraficas(asistencia,peso,rm,esfuerzo,id){
-  console.log(asistencia)
-  console.log(peso)
-  console.log(rm)
-  console.log(esfuerzo)
-  console.log(id)
+function actualizarGraficas(asistencia, peso, esfuerzo, id) {
+  //Ahora hay que hacer la consulta a la base de datos para obtener los datos necesatios para graficar
+  $.ajax({
+    type: "post",
+    data: {
+      accion: "datos",
+      alumno: id,
+    },
+    async:false,
+    url: "models/modelo-alumno.php",
+    dataType: "json",
+    success: function (data) {
+      //Actualizaremos primero la de asistencia
+      console.log("Actualizar Graficas");
+      actualizarGrafica(
+        asistencia,
+        data.asistencia.labels,
+        data.asistencia.values
+      );
+      actualizarGrafica(peso, data.peso.labels, data.peso.values);
+      actualizarGrafica(esfuerzo, data.esfuerzo.labels, data.esfuerzo.values);
+
+      
+      
+    },
+  });
 }
+function actualizarGrafica(grafico, labels, values) {
+  grafico.data.labels = labels;
+  grafico.data.datasets[0].data = values;
+}
+function actualizarRM()

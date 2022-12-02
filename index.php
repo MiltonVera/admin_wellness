@@ -98,6 +98,33 @@
               </h2>
             </div>
 
+            <section class="accordion__datosElementales">
+              <div>
+                <p class="accordion__datosElementales__subtitulo">Matrícula</p>
+                <p id="matricula">A000</p>
+              </div>
+              <div>
+                <p class="accordion__datosElementales__subtitulo">Nivel</p>
+                <p id="nivel">Básico</p>
+              </div>
+              <div>
+                <p class="accordion__datosElementales__subtitulo">Objetivos</p>
+                <ol class="accordion__datosElementales__objetivos" id="objetivos">
+                  <li>Objetivo #1</li>
+                  <li>Objetivo #2</li>
+                  <li>Objetivo #3</li>
+                </ol>
+              </div>
+              <div>
+                <p class="accordion__datosElementales__subtitulo" id="lesion">Lesión</p>
+                <p>Sí</p>
+              </div>
+              <div>
+                <p class="accordion__datosElementales__subtitulo" id="descanso">Tiempo sin entrenar</p>
+                <p>5 meses</p>
+              </div>
+            </section>
+
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body graficasAccordion">
                 <div class="espacioGrafica__asistencia">
@@ -108,20 +135,6 @@
                 <div class="espacioGrafica__pesoAlumno">
                   <h3 class="graficas__texto">Gráfica Peso Alumno</h3>
                   <canvas id="GraficaPesoAlumno" class="grafica__pesoAlumno" width="800" height="400"></canvas>
-                </div>
-
-                <div class="espacioGrafica__RM">
-                  <h3 class="graficas__texto">Gráfica RM's Básico</h3>
-                  <div class="form-floating">
-                    <select class="form-select espacioGrafica__RM__select" id="floatingSelect" aria-label="Floating label select example">
-                      <option selected>Escoge un RM</option>
-                      <option value="1">Sentadilla</option>
-                      <option value="2">Press de Banca</option>
-                      <option value="3">Peso Muerto</option>
-                      <option value="4">Press Militar</option>
-                    </select>
-                  </div>
-                  <canvas id="GraficaRMBasico" class="grafica__PR" width="400" height="200"></canvas>
                 </div>
 
                 <div class="espacioGrafica__emocional">

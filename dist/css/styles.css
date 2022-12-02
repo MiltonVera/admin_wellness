@@ -238,9 +238,6 @@
     padding-left: 10px;
 }
 
-.espacioGrafica__RM__select {
-    margin: 0 45%;
-}
 
 @media (min-width: 992px) {
     .graficasAccordion {
