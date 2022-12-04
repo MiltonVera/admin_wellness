@@ -114,6 +114,7 @@
               
             </ul>
           </li>
+          <?php if($_SESSION["admin"] == 1) {?>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fas fa-user-cog"></i>
@@ -138,6 +139,7 @@
               
             </ul>
           </li>
+          <?php } ?>
           
         </ul>
       </nav>
