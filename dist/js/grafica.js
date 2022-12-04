@@ -1,32 +1,39 @@
 $(function(){
-    inicializarGraficasGenerales();
+    $.ajax({
+        type: "post",
+        data: {
+          accion: "graficas"
+        },
+        url: "models/modelo-datos.php",
+        dataType: "json",
+        success: function (data) {
+            inicializarGraficasGenerales(data);
+        },
+      });
+    
 })
 
-function inicializarGraficasGenerales(){
-    const ctc = document.getElementById('GraficaMensualGeneral').getContext('2d');
-    const GraficaMensualGeneral = new Chart(ctc, {
-        type: 'line',
+function inicializarGraficasGenerales(data){
+ 
+  let {mensual,semanal} = data;
+  let ctx = [];
+  /* Inicializamos las graficas */
+  ctx.push(document.getElementById("GraficaMensualGeneral").getContext("2d"));
+  ctx.push(document.getElementById("GraficaSemanalGeneral").getContext("2d"));
+
+    const GraficaMensualGeneral = new Chart(ctx[0], {
+        type: 'bar',
         data: {
-            labels: ['Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'],
+            labels: mensual.labels,
             datasets: [{
                 label: '# de Asistencias',
-                data: [12, 19, 3, 5, 2, 3],
+                data: mensual.values,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                    "#007bff"
+                  ],
+                  borderColor: [
+                    "#007bff"
+                  ],
                 borderWidth: 1
             }]
         },
@@ -41,30 +48,19 @@ function inicializarGraficasGenerales(){
         }
     });
 
-    const cts = document.getElementById('GraficaSemanalGeneral').getContext('2d');
-    const GraficaSemanalGeneral = new Chart(cts, {
-        type: 'line',
+    const GraficaSemanalGeneral = new Chart(ctx[1], {
+        type: 'bar',
         data: {
-            labels: ['07/11/22', '08/11/22', '09/11/22', '10/11/22', '11/11/22', '12/11/22', '13/11/22'],
+            labels: semanal.labels,
             datasets: [{
                 label: '# de Asistencias',
-                data: [12, 19, 3, 5, 2, 3],
+                data: semanal.values,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                    "#007bff"
+                  ],
+                  borderColor: [
+                    "#007bff"
+                  ],
                 borderWidth: 1
             }]
         },

@@ -59,6 +59,31 @@ $(function() {
             }
         })
     });
+    $('#login-admin').on('submit', function(e) {
+        e.preventDefault();
+        let datos = $(this).serializeArray();
+        $.ajax({
+            type: $(this).attr('method'),
+            data: datos,
+            url: $(this).attr('action'),
+            dataType: 'json',
+            success: function(data) {
+                let resultado = data;
+                if (resultado.respuesta == "exito") {
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Credenciales incorrectas',
+                        text: 'Revisa tus credenciales',
+                        footer: ''
+                    })
+                }
+            }
+        })
+    });
 
     $('.borrar').on('click', function(e) {
         e.preventDefault();

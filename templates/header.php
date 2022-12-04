@@ -1,3 +1,5 @@
+<?php include_once "functions/sesion.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +18,8 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-  <?php if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar" || $pagina == "index-copy.php"){?>
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <?php } ?>
-
-
-
 
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
@@ -49,8 +46,8 @@
     </ul>
     <!-- Contenedor de navegacion de la derecha -->
     <div class="ml-auto botones-esquina-superior-derecha">
-      <button type="button" class="btn btn-success">Ajustes</button>
-      <button type="button" class="btn btn-success">Cerrar Sesión</button>
+      <a  href="editar-perfil.php" class="btn btn-success">Ajustes</a>
+      <a  href="login.php?cerrar_sesion=True" class="btn btn-success">Cerrar Sesión</a>
     </div>
   </nav>
 

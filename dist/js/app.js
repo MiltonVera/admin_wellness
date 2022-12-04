@@ -2,7 +2,7 @@ $(function () {
 
     $(".modal_rutina").on("click", e => modal_app(e, true))
 
-    
+    window.scrollTo(0, 0);
 
 });
 

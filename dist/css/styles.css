@@ -243,9 +243,6 @@
     padding-left: 10px;
 }
 
-.espacioGrafica__RM__select {
-    margin: 0 45%;
-}
 
 @media (min-width: 992px) {
     .graficasAccordion {
@@ -261,7 +258,7 @@
         margin: 0;
     }
 
-    .espacioGrafica__RM, .espacioGrafica__emocional {
+    .espacioGrafica {
         grid-column: 1 / 3;
     }
 }
