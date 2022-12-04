@@ -8,6 +8,7 @@
   $datos = $datos->fetch_assoc();
 ?>
 
+    
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
@@ -90,7 +91,7 @@
 
         <div class="modal_index"></div>
 
-        <div class="accordion" id="accordionExample"> <!--onclcik primeravez = false etiqueta también cambiar-->
+        <div class="accordion" id="alumno-buscador"> <!--onclcik primeravez = false etiqueta también cambiar-->
           <div class="card">
             <div class="card-header" id="headingOne">
               <h2 id="card-header--h2_Resultado_Buscador_alumno" class="mb-0">
@@ -129,7 +130,7 @@
               </div>
             </section>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#alumno-buscador">
               <div class="card-body graficasAccordion">
                 <div class="espacioGrafica__asistencia">
                   <h3 class="graficas__texto">Gráfica Asistencia</h3>

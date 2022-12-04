@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include_once "../functions/connection.php";
 include_once "../functions/ruta.php";
+include_once "../functions/sesion.php";
 $nombre = $_POST["nombre"];
 $nivel = $_POST["nivel"];
 $zona = $_POST["zona"];

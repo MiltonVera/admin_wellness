@@ -1,5 +1,6 @@
 <?php
 include_once "../functions/connection.php";
+include_once "../functions/sesion.php";
 
 class Esfuerzo
 {
@@ -60,9 +61,9 @@ if ($_POST["accion"] == "asignar") {
 
     $entrenamiento_alumno = json_encode($entrenamiento_alumno);
 
-
-    $stmt2 = $conn->prepare("UPDATE alumno set entrenamiento=? WHERE id_alumno=?");
-    $stmt2->bind_param("si", $entrenamiento_alumno, $alumno);
+    $id_coach = (int)$_SESSION["id"];
+    $stmt2 = $conn->prepare("UPDATE alumno set entrenamiento=?,id_coach=? WHERE id_alumno=?");
+    $stmt2->bind_param("sii", $entrenamiento_alumno,$id_coach, $alumno);
     $stmt2->execute();
 
 

@@ -12,9 +12,6 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
 
-<?php 
-if(substr($pagina,0,5) == "lista" || $pagina == "index.php" ){?>
-
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -55,11 +52,9 @@ if(substr($pagina,0,5) == "lista" || $pagina == "index.php" ){?>
   });
 </script>
 
-<?php } ?>
 
 
-<?php 
-if(substr($pagina,0,5) == "crear" || substr($pagina,0,6) == "editar" ||  $pagina == "index.php"){?>
+
 
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -74,7 +69,7 @@ $(function () {
 });
 
 </script>
-<?php } ?>
+
 
 
 <!-- AdminLTE App -->

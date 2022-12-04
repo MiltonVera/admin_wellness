@@ -1,3 +1,11 @@
+<?php
+session_start();
+$cerrar_sesion = $_GET['cerrar_sesion'];
+if($cerrar_sesion){
+  session_destroy();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +51,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Inicia sesión para empezar a administrar</p>
 
-      <form action="../../index3.html" method="post">
+      <form name="login-admin-form" id="login-admin" method="post" action="models/modelo-admin.php">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="correo">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -53,7 +61,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-app end">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -61,6 +69,7 @@
           </div>
         </div>
         <div class="row">
+          <!--  
           <div class="col-6">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
@@ -68,9 +77,10 @@
                 Recuérdame
               </label>
             </div>
-          </div>
+          </div>-->
           <!-- /.col -->
           <div class="col-6">
+            <input type="hidden" name="login-admin" value="1">
             <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
           </div>
           <!-- /.col -->
@@ -92,12 +102,8 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-<!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-
-
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 <script src="dist/js/ajax.js"></script>
 <script src="dist/js/app.js"></script>

@@ -1,6 +1,8 @@
 # System / Log files
 *.DS_Store
 *.log
+/functions/connection.php
+connection-produccion.php
 
 # Archives
 *.zip

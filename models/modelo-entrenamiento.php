@@ -1,6 +1,7 @@
 <?php 
 
 include_once "../functions/connection.php";
+include_once "../functions/sesion.php";
 
 
 //die(var_dump($_POST));
