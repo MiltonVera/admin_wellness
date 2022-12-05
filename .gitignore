@@ -15,7 +15,7 @@ nbproject
 nbproject/private
 .vscode/
 .vs/
-
+docs/**
 # Node / Bower
 node_modules/
 bower_components/
