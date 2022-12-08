@@ -66,6 +66,7 @@ if($_POST['registro'] == 'editar'){
     //Eliminacion de foto anterior
     if($_FILES['ejecucion']['size'] > 0){//Si se subio un nuevo archivo
         //Buscar nombre de la imagen anterior en la base de datos
+        
         try {
             $sql = "SELECT url_gif FROM ejercicio WHERE id_ejercicio=".$id;
             $imagen_bd = $conn->query($sql);
@@ -78,8 +79,9 @@ if($_POST['registro'] == 'editar'){
     }
     
     //Subir archivo por defecto, descomentar si no funciona la solucion anterior 
-    if(move_uploaded_file($_FILES['ejecucion']['tmp_name'],$directorio_gif . $nombre.".gif")){
-        $imagen_url = substr($directorio_gif,3) .$nombre.".gif";
+    $nombreImagen = md5(uniqid(rand(),true));
+    if(move_uploaded_file($_FILES['ejecucion']['tmp_name'],$directorio_gif . $nombreImagen.".gif")){
+        $imagen_url = substr($directorio_gif,3) .$nombreImagen.".gif";
         $imagen_resultado = "Se subio correctamente";
     }else{
         $respuesta = array(

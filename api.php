@@ -74,7 +74,7 @@ if ($_POST["accion"] == "login") {
     // Si la variables tiene algo entonces hace la verificación de la contraseña
     if ($existe) {
         // Si la contra hasheada que recibimos es la misma que la que tenemos guardada en la base de datos
-        if ($contra == $contraHash) {
+        if (password_verify( $contra,$contraHash)) {
             //Si todo es correcto entonces creamos el token y lo devolvemos
             $stmt->close();
 
@@ -146,11 +146,6 @@ if ($_POST["accion"] == "registro") {
             $stmt2->execute();
             $stmt2->close();
 
-            //Ahora que insertamos al alumno solo queda marcar a este alumno como registrado
-            $stmt3 = $conn->prepare("UPDATE autorizados SET registrado = 1 WHERE matricula= ?");
-            $stmt3->bind_param("s",$matricula);
-            $stmt3->execute();
-            $stmt3->close();
 
             $respuesta = array("token"=> $token);
 
@@ -327,6 +322,18 @@ if($_POST["accion"] == "esfuerzo"){
     die(json_encode(Array("respuesta" => "exito")));
 }
 
+if($_POST["accion"] == "imagen"){
+    $id_ejercicio = (int) $_POST["id"];
+
+    $stmt = $conn->prepare("SELECT url_gif FROM ejercicio WHERE id_ejercicio=?");
+    $stmt->bind_param("i",$id_ejercicio);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $resultado = $resultado->fetch_assoc();
+
+    die(json_encode(array("url"=> $resultado["url_gif"])));
+
+}
 
 
 
